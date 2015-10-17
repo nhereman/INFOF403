@@ -18,6 +18,7 @@ import java.util.regex.PatternSyntaxException;
 
 VarName		=	[A-Za-z][A-Za-z0-9]*
 Number		=	[1-9]+[0-9]*
+Comment		=	"co"("\n" | " ")
 
 //Declare exclusive states
 
@@ -26,7 +27,7 @@ Number		=	[1-9]+[0-9]*
 %%//Identification of tokens
 
 <YYINITIAL> {
-	"co"		{yybegin(COMMENT_STATE);}
+	{Comment}		{yybegin(COMMENT_STATE);}
 
 	"begin" 	{return new Symbol(LexicalUnit.BEG,yyline,yycolumn,new String(yytext()));}
 	"end" 		{return new Symbol(LexicalUnit.BEG,yyline,yycolumn,new String(yytext()));}
@@ -68,9 +69,11 @@ Number		=	[1-9]+[0-9]*
 
 	{VarName} 	{return new Symbol(LexicalUnit.VARNAME,yyline,yycolumn,new String(yytext()));}
 	{Number}	{return new Symbol(LexicalUnit.READ,yyline,yycolumn,new String(yytext()));}
+	[^]			{ return null; }
 }
 
 <COMMENT_STATE> {
-	"co"		{yybegin(YYINITIAL);}
+	{Comment}		{yybegin(YYINITIAL);}
+	[^]			{ return null; }
 }
 

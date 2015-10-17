@@ -34,11 +34,11 @@ class LexicalAnalyzer {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\50\0\1\17\1\20\1\23\1\22\1\0\1\21\1\0\1\24\1\2"+
-    "\11\3\1\15\1\14\1\35\1\16\1\34\2\0\32\1\6\0\1\32"+
-    "\1\6\1\4\1\13\1\7\1\25\1\10\1\27\1\11\2\1\1\30"+
-    "\1\37\1\12\1\5\1\41\1\1\1\33\1\31\1\26\2\1\1\36"+
-    "\1\1\1\40\1\1\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff95\0";
+    "\12\0\1\6\25\0\1\6\7\0\1\20\1\21\1\24\1\23\1\0"+
+    "\1\22\1\0\1\25\1\2\11\3\1\16\1\15\1\36\1\17\1\35"+
+    "\2\0\32\1\6\0\1\33\1\7\1\4\1\14\1\10\1\26\1\11"+
+    "\1\30\1\12\2\1\1\31\1\40\1\13\1\5\1\42\1\1\1\34"+
+    "\1\32\1\27\2\1\1\37\1\1\1\41\1\1\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff95\0";
 
   /** 
    * Translates characters to character classes
@@ -51,16 +51,17 @@ class LexicalAnalyzer {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\2\0\1\1\1\2\7\1\1\3\1\0\1\4\1\5"+
-    "\1\6\1\7\1\10\1\11\1\12\4\1\1\13\1\14"+
-    "\2\1\1\0\1\15\1\16\1\17\1\1\1\20\2\1"+
-    "\1\21\1\1\1\22\1\23\1\24\1\1\1\25\1\1"+
-    "\1\26\3\1\1\27\1\30\2\1\1\31\1\1\1\32"+
-    "\1\1\1\33\1\34\2\1\1\35\4\1\1\36\1\37"+
-    "\1\40\1\2\2\1\1\41\1\42";
+    "\2\0\1\1\1\2\1\3\7\2\1\4\1\1\1\5"+
+    "\1\6\1\7\1\10\1\11\1\12\1\13\4\2\1\14"+
+    "\1\15\2\2\1\1\1\2\1\16\1\17\1\2\1\20"+
+    "\2\2\1\21\1\2\1\22\1\23\1\24\1\2\1\25"+
+    "\1\2\1\26\3\2\1\27\1\30\2\2\1\0\1\31"+
+    "\1\2\1\32\1\2\1\33\1\34\2\2\1\35\3\2"+
+    "\1\36\1\2\1\37\1\40\1\41\1\3\2\2\1\42"+
+    "\1\43";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[73];
+    int [] result = new int[76];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -85,19 +86,19 @@ class LexicalAnalyzer {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\42\0\104\0\146\0\210\0\252\0\314\0\356"+
-    "\0\u0110\0\u0132\0\u0154\0\u0176\0\u0198\0\u0176\0\u0176\0\u0176"+
-    "\0\u0176\0\u0176\0\u0176\0\u01ba\0\u01dc\0\u01fe\0\u0220\0\u0242"+
-    "\0\u0264\0\u0286\0\u02a8\0\u02ca\0\u02ec\0\104\0\104\0\104"+
-    "\0\u030e\0\104\0\u0330\0\u0352\0\104\0\u0374\0\104\0\u0176"+
-    "\0\u0176\0\u0396\0\104\0\u03b8\0\104\0\u03da\0\u03fc\0\u041e"+
-    "\0\u0176\0\u0176\0\u0440\0\u0462\0\u0176\0\u0484\0\104\0\u04a6"+
-    "\0\104\0\104\0\u04c8\0\u04ea\0\104\0\u050c\0\u052e\0\u0550"+
-    "\0\u0572\0\104\0\104\0\104\0\104\0\u0594\0\u05b6\0\104"+
-    "\0\104";
+    "\0\0\0\43\0\106\0\151\0\214\0\257\0\322\0\365"+
+    "\0\u0118\0\u013b\0\u015e\0\u0181\0\106\0\u01a4\0\106\0\106"+
+    "\0\106\0\106\0\106\0\106\0\u01c7\0\u01ea\0\u020d\0\u0230"+
+    "\0\u0253\0\u0276\0\u0299\0\u02bc\0\u02df\0\u0302\0\u0325\0\151"+
+    "\0\151\0\u0348\0\151\0\u036b\0\u038e\0\151\0\u03b1\0\151"+
+    "\0\106\0\106\0\u03d4\0\151\0\u03f7\0\151\0\u041a\0\u043d"+
+    "\0\u0460\0\106\0\106\0\u0483\0\u04a6\0\u04c9\0\106\0\u04ec"+
+    "\0\151\0\u050f\0\151\0\151\0\u0532\0\u0555\0\151\0\u0578"+
+    "\0\u059b\0\u05be\0\106\0\u05e1\0\151\0\151\0\151\0\151"+
+    "\0\u0604\0\u0627\0\151\0\151";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[73];
+    int [] result = new int[76];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -120,50 +121,60 @@ class LexicalAnalyzer {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\0\1\3\1\0\1\4\1\5\1\6\1\7\1\10"+
-    "\1\3\1\11\1\12\1\13\1\14\1\15\1\16\1\17"+
-    "\1\20\1\21\1\22\1\23\1\24\1\25\1\26\3\3"+
-    "\1\27\1\30\1\31\1\32\1\33\2\3\1\34\4\0"+
-    "\1\35\36\0\13\3\11\0\7\3\2\0\4\3\2\0"+
-    "\2\4\37\0\4\3\1\36\6\3\11\0\7\3\2\0"+
-    "\4\3\1\0\12\3\1\37\11\0\6\3\1\40\2\0"+
-    "\4\3\1\0\6\3\1\41\4\3\11\0\7\3\2\0"+
-    "\2\3\1\42\1\3\1\0\11\3\1\43\1\3\11\0"+
-    "\3\3\1\44\3\3\2\0\4\3\1\0\13\3\11\0"+
-    "\1\45\6\3\2\0\4\3\1\0\4\3\1\46\6\3"+
-    "\11\0\7\3\2\0\4\3\1\0\4\3\1\47\6\3"+
-    "\11\0\7\3\2\0\4\3\60\0\1\50\41\0\1\51"+
-    "\24\0\4\3\1\52\3\3\1\53\2\3\11\0\6\3"+
-    "\1\54\2\0\4\3\1\0\4\3\1\55\6\3\11\0"+
-    "\2\3\1\56\4\3\2\0\4\3\1\0\11\3\1\57"+
-    "\1\3\11\0\7\3\2\0\4\3\1\0\6\3\1\60"+
-    "\4\3\11\0\7\3\2\0\4\3\16\0\1\61\41\0"+
-    "\1\62\24\0\13\3\11\0\2\3\1\63\4\3\2\0"+
-    "\4\3\1\0\13\3\11\0\6\3\1\64\2\0\4\3"+
-    "\5\0\1\65\35\0\7\3\1\66\3\3\11\0\7\3"+
-    "\2\0\4\3\1\0\12\3\1\67\11\0\7\3\2\0"+
-    "\4\3\1\0\13\3\11\0\4\3\1\70\2\3\2\0"+
-    "\4\3\1\0\13\3\11\0\1\3\1\71\5\3\2\0"+
-    "\4\3\1\0\13\3\11\0\6\3\1\72\2\0\4\3"+
-    "\1\0\4\3\1\73\6\3\11\0\7\3\2\0\4\3"+
-    "\1\0\6\3\1\74\4\3\11\0\7\3\2\0\4\3"+
-    "\1\0\12\3\1\75\11\0\7\3\2\0\4\3\1\0"+
-    "\13\3\11\0\5\3\1\76\1\3\2\0\4\3\1\0"+
-    "\10\3\1\77\2\3\11\0\7\3\2\0\4\3\1\0"+
-    "\10\3\1\100\2\3\11\0\7\3\2\0\4\3\1\0"+
-    "\10\3\1\101\2\3\11\0\7\3\2\0\4\3\1\0"+
-    "\6\3\1\102\4\3\11\0\7\3\2\0\4\3\1\0"+
-    "\13\3\11\0\7\3\2\0\1\3\1\103\2\3\1\0"+
-    "\11\3\1\104\1\3\11\0\7\3\2\0\4\3\1\0"+
-    "\12\3\1\105\11\0\7\3\2\0\4\3\1\0\13\3"+
-    "\11\0\3\3\1\106\3\3\2\0\4\3\1\0\11\3"+
-    "\1\107\1\3\11\0\7\3\2\0\4\3\1\0\11\3"+
-    "\1\67\1\3\11\0\7\3\2\0\4\3\1\0\6\3"+
-    "\1\110\4\3\11\0\7\3\2\0\4\3\1\0\13\3"+
-    "\11\0\1\3\1\111\5\3\2\0\4\3";
+    "\1\3\1\4\1\3\1\5\1\6\1\7\1\3\1\10"+
+    "\1\11\1\4\1\12\1\13\1\14\1\15\1\16\1\17"+
+    "\1\20\1\21\1\22\1\23\1\24\1\25\1\26\1\27"+
+    "\3\4\1\30\1\31\1\32\1\33\1\34\2\4\1\35"+
+    "\4\3\1\36\36\3\44\0\5\4\1\0\6\4\11\0"+
+    "\7\4\2\0\4\4\2\0\2\5\40\0\4\4\1\37"+
+    "\1\0\6\4\11\0\7\4\2\0\4\4\1\0\5\4"+
+    "\1\0\5\4\1\40\11\0\6\4\1\41\2\0\4\4"+
+    "\1\0\5\4\1\0\1\4\1\42\4\4\11\0\7\4"+
+    "\2\0\2\4\1\43\1\4\1\0\5\4\1\0\4\4"+
+    "\1\44\1\4\11\0\3\4\1\45\3\4\2\0\4\4"+
+    "\1\0\5\4\1\0\6\4\11\0\1\46\6\4\2\0"+
+    "\4\4\1\0\4\4\1\47\1\0\6\4\11\0\7\4"+
+    "\2\0\4\4\1\0\4\4\1\50\1\0\6\4\11\0"+
+    "\7\4\2\0\4\4\17\0\1\51\42\0\1\52\24\0"+
+    "\4\4\1\53\1\0\3\4\1\54\2\4\11\0\6\4"+
+    "\1\55\2\0\4\4\1\0\4\4\1\56\1\0\6\4"+
+    "\11\0\2\4\1\57\4\4\2\0\4\4\1\0\5\4"+
+    "\1\0\4\4\1\60\1\4\11\0\7\4\2\0\4\4"+
+    "\1\0\5\4\1\0\1\4\1\61\4\4\11\0\7\4"+
+    "\2\0\4\4\17\0\1\62\42\0\1\63\24\0\5\4"+
+    "\1\0\6\4\11\0\2\4\1\64\4\4\2\0\4\4"+
+    "\1\0\5\4\1\0\6\4\11\0\6\4\1\65\2\0"+
+    "\4\4\5\0\1\66\36\0\5\4\1\67\6\4\11\0"+
+    "\7\4\2\0\4\4\1\0\5\4\1\0\2\4\1\70"+
+    "\3\4\11\0\7\4\2\0\4\4\1\0\5\4\1\0"+
+    "\5\4\1\71\11\0\7\4\2\0\4\4\1\0\5\4"+
+    "\1\0\6\4\11\0\4\4\1\72\2\4\2\0\4\4"+
+    "\1\0\5\4\1\0\6\4\11\0\1\4\1\73\5\4"+
+    "\2\0\4\4\1\0\5\4\1\0\6\4\11\0\6\4"+
+    "\1\74\2\0\4\4\1\0\4\4\1\75\1\0\6\4"+
+    "\11\0\7\4\2\0\4\4\1\0\5\4\1\0\1\4"+
+    "\1\76\4\4\11\0\7\4\2\0\4\4\1\0\5\4"+
+    "\1\0\5\4\1\77\11\0\7\4\2\0\4\4\1\0"+
+    "\5\4\1\0\6\4\11\0\5\4\1\100\1\4\2\0"+
+    "\4\4\1\0\5\4\1\0\3\4\1\101\2\4\11\0"+
+    "\7\4\2\0\4\4\1\0\5\4\1\0\3\4\1\102"+
+    "\2\4\11\0\7\4\2\0\4\4\6\0\1\103\35\0"+
+    "\5\4\1\0\3\4\1\104\2\4\11\0\7\4\2\0"+
+    "\4\4\1\0\5\4\1\0\1\4\1\105\4\4\11\0"+
+    "\7\4\2\0\4\4\1\0\5\4\1\0\6\4\11\0"+
+    "\7\4\2\0\1\4\1\106\2\4\1\0\5\4\1\0"+
+    "\4\4\1\107\1\4\11\0\7\4\2\0\4\4\1\0"+
+    "\5\4\1\0\5\4\1\110\11\0\7\4\2\0\4\4"+
+    "\1\0\5\4\1\0\6\4\11\0\3\4\1\111\3\4"+
+    "\2\0\4\4\1\0\5\4\1\0\4\4\1\112\1\4"+
+    "\11\0\7\4\2\0\4\4\1\0\5\4\1\0\4\4"+
+    "\1\71\1\4\11\0\7\4\2\0\4\4\1\0\5\4"+
+    "\1\0\1\4\1\113\4\4\11\0\7\4\2\0\4\4"+
+    "\1\0\5\4\1\0\6\4\11\0\1\4\1\114\5\4"+
+    "\2\0\4\4";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[1496];
+    int [] result = new int[1610];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -201,11 +212,11 @@ class LexicalAnalyzer {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\2\0\11\1\1\11\1\0\6\11\11\1\1\0\12\1"+
-    "\2\11\7\1\2\11\2\1\1\11\24\1";
+    "\2\0\1\11\11\1\1\11\1\1\6\11\24\1\2\11"+
+    "\7\1\2\11\2\1\1\0\1\11\13\1\1\11\11\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[73];
+    int [] result = new int[76];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -301,7 +312,7 @@ class LexicalAnalyzer {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 120) {
+    while (i < 128) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -653,141 +664,145 @@ class LexicalAnalyzer {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { return new Symbol(LexicalUnit.VARNAME,yyline,yycolumn,new String(yytext()));
-            }
-          case 35: break;
-          case 2: 
-            { return new Symbol(LexicalUnit.READ,yyline,yycolumn,new String(yytext()));
+            { return null;
             }
           case 36: break;
-          case 3: 
-            { return new Symbol(LexicalUnit.SEMICOLON,yyline,yycolumn,new String(yytext()));
+          case 2: 
+            { return new Symbol(LexicalUnit.VARNAME,yyline,yycolumn,new String(yytext()));
             }
           case 37: break;
-          case 4: 
-            { return new Symbol(LexicalUnit.EQUAL,yyline,yycolumn,new String(yytext()));
+          case 3: 
+            { return new Symbol(LexicalUnit.READ,yyline,yycolumn,new String(yytext()));
             }
           case 38: break;
-          case 5: 
-            { return new Symbol(LexicalUnit.LEFT_PARENTHESIS,yyline,yycolumn,new String(yytext()));
+          case 4: 
+            { return new Symbol(LexicalUnit.SEMICOLON,yyline,yycolumn,new String(yytext()));
             }
           case 39: break;
-          case 6: 
-            { return new Symbol(LexicalUnit.RIGHT_PARENTHESIS,yyline,yycolumn,new String(yytext()));
+          case 5: 
+            { return new Symbol(LexicalUnit.EQUAL,yyline,yycolumn,new String(yytext()));
             }
           case 40: break;
-          case 7: 
-            { return new Symbol(LexicalUnit.MINUS,yyline,yycolumn,new String(yytext()));
+          case 6: 
+            { return new Symbol(LexicalUnit.LEFT_PARENTHESIS,yyline,yycolumn,new String(yytext()));
             }
           case 41: break;
-          case 8: 
-            { return new Symbol(LexicalUnit.PLUS,yyline,yycolumn,new String(yytext()));
+          case 7: 
+            { return new Symbol(LexicalUnit.RIGHT_PARENTHESIS,yyline,yycolumn,new String(yytext()));
             }
           case 42: break;
-          case 9: 
-            { return new Symbol(LexicalUnit.TIMES,yyline,yycolumn,new String(yytext()));
+          case 8: 
+            { return new Symbol(LexicalUnit.MINUS,yyline,yycolumn,new String(yytext()));
             }
           case 43: break;
-          case 10: 
-            { return new Symbol(LexicalUnit.DIVIDE,yyline,yycolumn,new String(yytext()));
+          case 9: 
+            { return new Symbol(LexicalUnit.PLUS,yyline,yycolumn,new String(yytext()));
             }
           case 44: break;
-          case 11: 
-            { return new Symbol(LexicalUnit.GREATER,yyline,yycolumn,new String(yytext()));
+          case 10: 
+            { return new Symbol(LexicalUnit.TIMES,yyline,yycolumn,new String(yytext()));
             }
           case 45: break;
-          case 12: 
-            { return new Symbol(LexicalUnit.SMALLER,yyline,yycolumn,new String(yytext()));
+          case 11: 
+            { return new Symbol(LexicalUnit.DIVIDE,yyline,yycolumn,new String(yytext()));
             }
           case 46: break;
-          case 13: 
-            { yybegin(COMMENT_STATE);
+          case 12: 
+            { return new Symbol(LexicalUnit.GREATER,yyline,yycolumn,new String(yytext()));
             }
           case 47: break;
+          case 13: 
+            { return new Symbol(LexicalUnit.SMALLER,yyline,yycolumn,new String(yytext()));
+            }
+          case 48: break;
           case 14: 
             { return new Symbol(LexicalUnit.OD,yyline,yycolumn,new String(yytext()));
             }
-          case 48: break;
+          case 49: break;
           case 15: 
             { return new Symbol(LexicalUnit.OR,yyline,yycolumn,new String(yytext()));
             }
-          case 49: break;
+          case 50: break;
           case 16: 
             { return new Symbol(LexicalUnit.BY,yyline,yycolumn,new String(yytext()));
             }
-          case 50: break;
+          case 51: break;
           case 17: 
             { return new Symbol(LexicalUnit.IF,yyline,yycolumn,new String(yytext()));
             }
-          case 51: break;
+          case 52: break;
           case 18: 
             { return new Symbol(LexicalUnit.DO,yyline,yycolumn,new String(yytext()));
             }
-          case 52: break;
+          case 53: break;
           case 19: 
             { return new Symbol(LexicalUnit.ASSIGN,yyline,yycolumn,new String(yytext()));
             }
-          case 53: break;
+          case 54: break;
           case 20: 
             { return new Symbol(LexicalUnit.DIFFERENT,yyline,yycolumn,new String(yytext()));
             }
-          case 54: break;
+          case 55: break;
           case 21: 
             { return new Symbol(LexicalUnit.FI,yyline,yycolumn,new String(yytext()));
             }
-          case 55: break;
+          case 56: break;
           case 22: 
             { return new Symbol(LexicalUnit.TO,yyline,yycolumn,new String(yytext()));
             }
-          case 56: break;
+          case 57: break;
           case 23: 
             { return new Symbol(LexicalUnit.GREATER_EQUAL,yyline,yycolumn,new String(yytext()));
             }
-          case 57: break;
+          case 58: break;
           case 24: 
             { return new Symbol(LexicalUnit.SMALLER_EQUAL,yyline,yycolumn,new String(yytext()));
             }
-          case 58: break;
-          case 25: 
-            { yybegin(YYINITIAL);
-            }
           case 59: break;
+          case 25: 
+            { yybegin(COMMENT_STATE);
+            }
+          case 60: break;
           case 26: 
             { return new Symbol(LexicalUnit.BEG,yyline,yycolumn,new String(yytext()));
             }
-          case 60: break;
+          case 61: break;
           case 27: 
             { return new Symbol(LexicalUnit.NOT,yyline,yycolumn,new String(yytext()));
             }
-          case 61: break;
+          case 62: break;
           case 28: 
             { return new Symbol(LexicalUnit.FOR,yyline,yycolumn,new String(yytext()));
             }
-          case 62: break;
+          case 63: break;
           case 29: 
             { return new Symbol(LexicalUnit.AND,yyline,yycolumn,new String(yytext()));
             }
-          case 63: break;
-          case 30: 
-            { return new Symbol(LexicalUnit.ELSE,yyline,yycolumn,new String(yytext()));
-            }
           case 64: break;
-          case 31: 
-            { return new Symbol(LexicalUnit.FROM,yyline,yycolumn,new String(yytext()));
+          case 30: 
+            { yybegin(YYINITIAL);
             }
           case 65: break;
-          case 32: 
-            { return new Symbol(LexicalUnit.THEN,yyline,yycolumn,new String(yytext()));
+          case 31: 
+            { return new Symbol(LexicalUnit.ELSE,yyline,yycolumn,new String(yytext()));
             }
           case 66: break;
-          case 33: 
-            { return new Symbol(LexicalUnit.WHILE,yyline,yycolumn,new String(yytext()));
+          case 32: 
+            { return new Symbol(LexicalUnit.FROM,yyline,yycolumn,new String(yytext()));
             }
           case 67: break;
-          case 34: 
-            { return new Symbol(LexicalUnit.PRINT,yyline,yycolumn,new String(yytext()));
+          case 33: 
+            { return new Symbol(LexicalUnit.THEN,yyline,yycolumn,new String(yytext()));
             }
           case 68: break;
+          case 34: 
+            { return new Symbol(LexicalUnit.WHILE,yyline,yycolumn,new String(yytext()));
+            }
+          case 69: break;
+          case 35: 
+            { return new Symbol(LexicalUnit.PRINT,yyline,yycolumn,new String(yytext()));
+            }
+          case 70: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
