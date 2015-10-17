@@ -17,6 +17,8 @@ import java.util.regex.PatternSyntaxException;
 //Extended Regular Expressions
 
 // Put your regular expressions here...
+VarName		=	[A-Za-z][A-Za-z0-9]*
+Number		=	[1-9]+[0-9]*
 
 //Declare exclusive states
 
