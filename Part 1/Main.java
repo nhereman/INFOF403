@@ -37,7 +37,7 @@ public class Main {
 				}
 
 			} catch(IOException exception) {
-				 System.out.println ("Erreur during read : " + exception.getMessage());
+				 System.out.println ("Error during read : " + exception.getMessage());
 			}
 		}
 	}
