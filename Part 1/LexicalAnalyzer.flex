@@ -17,7 +17,7 @@ import java.util.regex.PatternSyntaxException;
 //Extended Regular Expressions
 
 VarName		=	[A-Za-z][A-Za-z0-9]*
-Number		=	([1-9]+[0-9]* | 0)
+Number		=	[0-9]*
 Comment		=	"co"("\n" | " ")
 
 //Declare exclusive states
@@ -30,7 +30,7 @@ Comment		=	"co"("\n" | " ")
 	{Comment}		{yybegin(COMMENT_STATE);}
 
 	"begin" 	{return new Symbol(LexicalUnit.BEG,yyline,yycolumn,new String(yytext()));}
-	"end" 		{return new Symbol(LexicalUnit.BEG,yyline,yycolumn,new String(yytext()));}
+	"end" 		{return new Symbol(LexicalUnit.END,yyline,yycolumn,new String(yytext()));}
 
 	";" 		{return new Symbol(LexicalUnit.SEMICOLON,yyline,yycolumn,new String(yytext()));}
 
