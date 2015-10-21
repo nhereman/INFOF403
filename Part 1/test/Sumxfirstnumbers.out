@@ -1,0 +1,45 @@
+token: begin	lexical unit: BEG
+token: read	lexical unit: READ
+token: (	lexical unit: LEFT_PARENTHESIS
+token: x	lexical unit: VARNAME
+token: )	lexical unit: RIGHT_PARENTHESIS
+token: ;	lexical unit: SEMICOLON
+token: sum	lexical unit: VARNAME
+token: :=	lexical unit: ASSIGN
+token: 0	lexical unit: NUMBER
+token: ;	lexical unit: SEMICOLON
+token: if	lexical unit: IF
+token: not	lexical unit: NOT
+token: (	lexical unit: LEFT_PARENTHESIS
+token: x	lexical unit: VARNAME
+token: =	lexical unit: EQUAL
+token: 0	lexical unit: NUMBER
+token: )	lexical unit: RIGHT_PARENTHESIS
+token: then	lexical unit: THEN
+token: for	lexical unit: FOR
+token: i	lexical unit: VARNAME
+token: from	lexical unit: FROM
+token: 0	lexical unit: NUMBER
+token: by	lexical unit: BY
+token: 1	lexical unit: NUMBER
+token: to	lexical unit: TO
+token: x	lexical unit: VARNAME
+token: do	lexical unit: DO
+token: sum	lexical unit: VARNAME
+token: :=	lexical unit: ASSIGN
+token: sum	lexical unit: VARNAME
+token: +	lexical unit: PLUS
+token: i	lexical unit: VARNAME
+token: ;	lexical unit: SEMICOLON
+token: od	lexical unit: OD
+token: ;	lexical unit: SEMICOLON
+token: fi	lexical unit: FI
+token: print	lexical unit: PRINT
+token: (	lexical unit: LEFT_PARENTHESIS
+token: sum	lexical unit: VARNAME
+token: )	lexical unit: RIGHT_PARENTHESIS
+token: end	lexical unit: END
+Identifiers
+i 8
+sum 6
+x 5

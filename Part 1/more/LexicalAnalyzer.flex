@@ -17,7 +17,7 @@ import java.util.regex.PatternSyntaxException;
 //Extended Regular Expressions
 
 VarName		=	[A-Za-z][A-Za-z0-9]*
-Number		=	[0-9]*
+Number		=	[0-9]+
 Comment		=	"co"("\n" | " ")
 
 //Declare exclusive states
