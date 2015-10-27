@@ -11,7 +11,11 @@ import java.util.regex.PatternSyntaxException;
 %yylexthrow PatternSyntaxException
 
 %eofval{
-	return new Symbol(LexicalUnit.END_OF_STREAM,yyline, yycolumn);
+	if ( yystate() == COMMENT_STATE ) {
+		throw new PatternSyntaxException("File end with non closed comment","", 0);
+	} else {
+		return new Symbol(LexicalUnit.END_OF_STREAM,yyline, yycolumn);
+	}
 %eofval}
 
 //Extended Regular Expressions
@@ -72,8 +76,9 @@ Comment		=	"co"("\n" | " ")
 	
 	" "			{return null;}
 	"\n"		{return null;}
+	"\t"		{return null;}
 
-	[^]			{throw new PatternSyntaxException("Pattern error at line " + yyline + " " + yytext(),"", 0);}
+	[^]			{throw new PatternSyntaxException("Pattern error at line " + yyline + " : \"" + yytext()+"\"","", 0);}
 }
 
 <COMMENT_STATE> {

@@ -28,6 +28,8 @@
 
 To distinguish between comments and the grammar of the language or lexical units we are using two exclusive states. The initial one <YYINITIAL> and the comment state <COMMENT\_STATE>. While being in the initial state, if we find the comment Regular Expression, we just switch from state, otherwise we analyse the current token. While being in the comment state, we just wait for the second comment Regular Expression to switch back to the initial state ignoring every other token. In the initial state we throw an exception if we found an unknow token.
 
+At the end of the file, we check if we still are in comment state and throw an exception if it is the case because comments must be closed.
+
 \section{Regular Expressions}
 
 \begin{lstlisting}

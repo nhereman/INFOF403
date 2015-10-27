@@ -1,0 +1,9 @@
+token: begin	lexical unit: BEG
+token: a	lexical unit: VARNAME
+token: :=	lexical unit: ASSIGN
+token: 2	lexical unit: NUMBER
+token: -	lexical unit: MINUS
+token: 3	lexical unit: NUMBER
+token: b	lexical unit: VARNAME
+token: :=	lexical unit: ASSIGN
+Parse Error : Pattern error at line 4 : "$"

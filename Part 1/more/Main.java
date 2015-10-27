@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.TreeMap;
 import java.util.Map;
+import java.util.regex.PatternSyntaxException;
 
 public class Main {
 
@@ -37,7 +38,9 @@ public class Main {
 				}
 
 			} catch(IOException exception) {
-				 System.out.println ("Error during read : " + exception.getMessage());
+				System.out.println ("Error during read : " + exception.getMessage());
+			} catch(PatternSyntaxException e) {
+				System.out.println ("Parse Error : " + e.getDescription() );
 			}
 		}
 	}

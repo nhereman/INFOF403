@@ -1,0 +1,10 @@
+token: begin	lexical unit: BEG
+token: read	lexical unit: READ
+token: (	lexical unit: LEFT_PARENTHESIS
+token: a	lexical unit: VARNAME
+token: )	lexical unit: RIGHT_PARENTHESIS
+token: read	lexical unit: READ
+token: (	lexical unit: LEFT_PARENTHESIS
+token: b	lexical unit: VARNAME
+token: )	lexical unit: RIGHT_PARENTHESIS
+Parse Error : File end with non closed comment
