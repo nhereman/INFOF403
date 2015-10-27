@@ -43,6 +43,9 @@ We assumed here that voluntary errors that appear in the code we want to compile
 
 All the others regex are simply plain text keyword like "read", ";" "while", ...
 
+\section{Identifiers}
+Each time we find a variance with jflex we check if it is the first time we encounter it. If it is we had it in the identifiers map with the variance as a key and the line as a value. We use a TreeMap so the key are stored in an alphabetical order.
+
 
 
 \section{Test files}
