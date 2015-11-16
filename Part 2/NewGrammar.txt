@@ -63,7 +63,7 @@ Modification <Cond> (Ordre de priorité et association )
 <Cond> 	-> <CondFollow> or <Cond>
 		-> <CondFollow>
 
-<CondFollow> -> <CondTerm> and <CondFollow>
+<CondFollow> -> <CondFollow> and <CondTerm>
 			-> <CondTerm>
 
 <CondTerm>	-> <SimpleCond>
