@@ -1,0 +1,37 @@
+NOTE : Il faut encore supprimer les left-Recursion
+
+
+
+Modification <InstList> ( factorisation )
+
+<InstList>	-> <Instruction><NextInst>
+<NextInst>	-> Epsilon
+		-> <InstList>
+
+Modification <If> (Factorisation)
+
+<If>		-> if <Cond> then <Code> <EndIf>
+<EndIf>		-> fi
+		-> else <Code> fi
+
+Modification <Cond> (Ordre de priorité et association ) ( note : Trouver mieux que
+								CondTerm ? )
+<Cond> 		-> <Cond> or <AndCond>
+		-> <CondTerm>
+<AndCond>	-> <AndCond> and <CondTerm>
+<CondTerm>	-> <SimpleCond>
+		-> not <SimpleCond>
+
+Modification <ExprArith> (Ordre de priorité et association )
+
+(Suppression <Op>)
+<ExprArith>	-> <ExprArith> <TermOp> <Term>
+<Term>		-> <Term> <FactorOp> <Factor>
+<Factor>	-> (<ExprArith>)
+		-> - <ExprArith>
+		-> [VarName]
+		-> [Number]
+<TermOp>	-> +
+		-> -
+<FactorOp>	-> *
+		-> /
