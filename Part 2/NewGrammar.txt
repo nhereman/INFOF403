@@ -18,7 +18,9 @@ Modification <Cond> (Ordre de priorité et association ) ( note : Trouver mieux 
 								CondTerm ? )
 <Cond> 		-> <Cond> or <AndCond>
 		-> <CondTerm>
+		-> AndCond
 <AndCond>	-> <AndCond> and <CondTerm>
+		-> <CondTerm>
 <CondTerm>	-> <SimpleCond>
 		-> not <SimpleCond>
 
@@ -26,7 +28,9 @@ Modification <ExprArith> (Ordre de priorité et association )
 
 (Suppression <Op>)
 <ExprArith>	-> <ExprArith> <TermOp> <Term>
+		-> <Term>
 <Term>		-> <Term> <FactorOp> <Factor>
+		-> <Factor>
 <Factor>	-> (<ExprArith>)
 		-> - <ExprArith>
 		-> [VarName]
