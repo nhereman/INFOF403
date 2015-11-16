@@ -56,6 +56,26 @@ Modification <Cond> (Ordre de priorité et association )
 		-> not <SimpleCond>
 
 
+
+
+
+
+<Cond> 	-> <CondFollow> or <Cond>
+		-> <CondFollow>
+
+<CondFollow> -> <CondTerm> and <CondFollow>
+			-> <CondTerm>
+
+<CondTerm>	-> <SimpleCond>
+		-> not <SimpleCond>
+
+
+
+
+
+
+
+
 Modification <ExprArith> (Ordre de priorité et association )
 
 (Suppression <Op>)
