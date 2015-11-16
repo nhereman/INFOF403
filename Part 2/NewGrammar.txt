@@ -46,7 +46,7 @@ Modification <ExprArith> (Ordre de priorité et association )
 
 Modification <Cond> (Ordre de priorité et association ) 
 
-<Cond> 	-> <CondTerm> <AndCondFollow>
+<Cond> 	-> <CondTerm> <AndCondFollow> <OrCondFollow>
 <AndCondFollow> -> and <CondTerm> <AndCondFollow> <OrCondFollow>
 				-> ε
 <OrCondFollow> -> or <CondTerm> <AndCondFollow>
