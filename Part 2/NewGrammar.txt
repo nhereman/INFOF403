@@ -18,7 +18,7 @@ Modification <Cond> (Ordre de priorité et association ) ( note : Trouver mieux 
 								CondTerm ? )
 <Cond> 		-> <Cond> or <AndCond>
 		-> <CondTerm>
-		-> AndCond
+		-> <AndCond>
 <AndCond>	-> <AndCond> and <CondTerm>
 		-> <CondTerm>
 <CondTerm>	-> <SimpleCond>
@@ -31,6 +31,47 @@ Modification <ExprArith> (Ordre de priorité et association )
 		-> <Term>
 <Term>		-> <Term> <FactorOp> <Factor>
 		-> <Factor>
+<Factor>	-> (<ExprArith>)
+		-> - <ExprArith>
+		-> [VarName]
+		-> [Number]
+<TermOp>	-> +
+		-> -
+<FactorOp>	-> *
+		-> /
+
+
+
+###### TRY WAROU SANS RECCURSION #######
+
+Modification <Cond> (Ordre de priorité et association ) 
+
+<Cond> 	-> <AndCond> <AndCondFollow>
+		-> <CondTerm>
+<AndCondFollow> -> or <AndCond> <AndCondFollow>
+				-> ε
+
+<AndCond>	-> <CondTerm> <CondTermFollow>
+		-> <CondTerm>
+<CondTermFollow> -> and <CondTerm>
+				 -> ε
+
+<CondTerm>	-> <SimpleCond>
+		-> not <SimpleCond>
+
+
+Modification <ExprArith> (Ordre de priorité et association )
+
+(Suppression <Op>)
+
+<ExprArith>	-> <Term> <TermFollow>
+<TermFollow> -> <TermOp> <Term> <TermFollow>
+			 -> ε
+
+<Term>		-> <Factor> <FactorFollow>
+<FactorFollow>  -> <FactorOp> <Factor> <FactorFollow>
+				-> ε
+
 <Factor>	-> (<ExprArith>)
 		-> - <ExprArith>
 		-> [VarName]
