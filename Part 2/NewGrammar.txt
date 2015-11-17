@@ -1,3 +1,54 @@
+ [1]	<Program>	-> begin <Code> end
+ [2]	<Code>		-> Epsilon
+ [3]			-> <InstList>
+ [4]	<InstList>	-> <Instruction> <NextInst>
+ [5]	<NextInst>	-> Epsilon
+ [6]			-> ; <InstList>
+ [7]	<Instruction>	-> <Assign>
+ [8]			-> <If>
+ [9]			-> <While>
+[10]			-> <For>
+[11]			-> <Print>
+[12]			-> <Read>
+[13]	<Assign>	-> [VarName] := <ExprArith>
+[14]	<ExprArith>	-> <Term> <ExprArith2>
+[15]	<ExprArith2>	-> <TermOp> <ExprArith2>
+[16]			-> Epsilon
+[17]	<Term>		-> <Factor> <Term2>
+[18]	<Term2>		-> <FactorOp> <Term2>
+[19]			-> Epsilon
+[20]	<Factor>	-> (<ExprArith>)
+[21]			-> - <ExprArith>
+[22]			-> [VarName]
+[23]			-> [Number]
+[24]	<TermOp>	-> +
+[25]			-> -
+[26]	<FactorOp>	-> *
+[27]			-> /
+[28]	<If>		-> if <Cond> then <Code> <EndIf>
+[29]	<EndIf>		-> fi
+[30]			-> else <Code> fi
+[31]	<Cond>		-> <AndCond> <Cond2>
+[32]	<Cond2>		-> or <Cond2>
+[33]			-> Epsilon
+[34]	<AndCond>	-> <CondTerm> <AndCond2>
+[35]	<AndCond2>	-> and <AndCond2>
+[36]	<CondTerm>	-> <SimpleCond>
+[37]			-> not <SimpleCond>
+[38]	<SimpleCond>	-> <ExprArith> <Comp> <ExprArith>
+[39]	<Comp>		-> =
+[40]			-> >=
+[41]			-> >
+[42]			-> <=
+[43]			-> <
+[44]			-> /=
+[45]	<While>		-> while <Cond> do <Code> od
+[46]	<For>		-> for [VarName] from <ExprArith> by <ExprArith> to
+				<ExprArith> do <Code> od
+[47]	<Print>		-> print([VarName])
+[48]	<Read>		-> read([VarName])
+
+
 NOTE : Il faut encore supprimer les left-Recursion
 
 
