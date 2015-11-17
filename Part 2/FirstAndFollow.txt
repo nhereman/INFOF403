@@ -28,3 +28,31 @@ Print : {print}
 Read : {read}
 
 
+Follow:
+______
+Program : {$}
+Code : {end, FIRST(EndIf), fi, od}
+InstList : {FOLLOW(Code,NextInst)}
+NextInst : {FOLLOW(InstList)}
+Instruction : {FIRST(NextInst)}
+Assign : {FOLLOW(Instruction)}
+ExprArith : {), by, to, do, FOLLOW(Assign,Factor, SimpleCond), FIRST(Comp)}
+ExprArith2 : {FOLLOW(ExprArith)}
+Term : {FIRST(ExprArith2)}
+Term2 : {FOLLOW(Term)}
+Factor : {FIRST(Term2)}
+TermOp : {FIRST(ExprArith2)}
+FactorOp : {FIRST(Term2)}
+If : {FOLLOW(Instruction)}
+EndIf : {FOLLOW(If)}
+Cond : {then, do}
+Cond2 : {FOLLOW(Cond)}
+AndCond : {FIRST(Cond2)}
+AndCond2 : {FOLLOW(AndCond)}
+CondTerm : {FIRST(AndCond2)}
+SimpleCond : {FOLLOW(CondTerm)}
+Comp : {FIRST(ExprArith)}
+While : {FOLLOW(Instruction)}
+For : {FOLLOW(Instruction)}
+Print : {FOLLOW(Instruction)}
+Read : {FOLLOW(Instruction)}
