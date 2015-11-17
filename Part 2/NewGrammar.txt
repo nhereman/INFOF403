@@ -46,10 +46,13 @@ Modification <ExprArith> (Ordre de priorité et association )
 
 Modification <Cond> (Ordre de priorité et association ) 
 
+
+### MODIF post hadri ###
+
 <Cond> 	-> <CondTerm> <AndCondFollow> <OrCondFollow>
-<AndCondFollow> -> and <CondTerm> <AndCondFollow> <OrCondFollow>
+<AndCondFollow> -> and <CondTerm> <AndCondFollow>
 				-> ε
-<OrCondFollow> -> or <CondTerm> <AndCondFollow>
+<OrCondFollow> -> or <Cond>
 				-> ε
 
 <CondTerm>	-> <SimpleCond>
@@ -78,8 +81,6 @@ Modification <Cond> (Ordre de priorité et association )
 
 <CondTerm>	-> <SimpleCond>
 		-> not <SimpleCond>
-
-
 
 
 
