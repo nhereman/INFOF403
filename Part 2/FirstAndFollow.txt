@@ -1,0 +1,30 @@
+FIRST :
+_______
+Program : {begin}
+Code : {Epsilon,FIRST(InstList)}
+InstList : {FIRST(Instruction)}
+NextInst : {Epsilon,;}
+Instruction :{FIRST(Assign,If,While,For,Print,Read)}
+Assign : {VarName}
+ExprArith : {FIRST(Term)}
+ExprArith2 : {Epsilon, FIRST(TermOp)}
+Term : {FIRST(Factor)}
+Term2 : {Epsilon, FIRST(FACTOR)}
+Factor : {(, -, VarName, Number}
+TermOp : {+, -}
+FactorOp : {*, /}
+If : {if}
+EndIf : {fi, else}
+Cond : {FIRST(AndCond)}
+Cond2 : {Epsilon, or}
+AndCond : {FIRST(CondTerm)}
+AndCond2 : {Epsilon, and}
+CondTerm : {not, FIRST(SimpleCond)}
+SimpleCond : {FIRST(ExprArith)}
+Comp : {=, >=, >, <=, <, /=}
+While : {while}
+For : {for}
+Print : {print}
+Read : {read}
+
+
