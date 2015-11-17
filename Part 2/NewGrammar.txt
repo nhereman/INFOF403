@@ -33,20 +33,21 @@
 [33]			-> Epsilon
 [34]	<AndCond>	-> <CondTerm> <AndCond2>
 [35]	<AndCond2>	-> and <AndCond2>
-[36]	<CondTerm>	-> <SimpleCond>
-[37]			-> not <SimpleCond>
-[38]	<SimpleCond>	-> <ExprArith> <Comp> <ExprArith>
-[39]	<Comp>		-> =
-[40]			-> >=
-[41]			-> >
-[42]			-> <=
-[43]			-> <
-[44]			-> /=
-[45]	<While>		-> while <Cond> do <Code> od
-[46]	<For>		-> for [VarName] from <ExprArith> by <ExprArith> to
+[36]			-> Epsilon
+[37]	<CondTerm>	-> <SimpleCond>
+[38]			-> not <SimpleCond>
+[39]	<SimpleCond>	-> <ExprArith> <Comp> <ExprArith>
+[40]	<Comp>		-> =
+[41]			-> >=
+[42]			-> >
+[43]			-> <=
+[44]			-> <
+[45]			-> /=
+[46]	<While>		-> while <Cond> do <Code> od
+[47]	<For>		-> for [VarName] from <ExprArith> by <ExprArith> to
 				<ExprArith> do <Code> od
-[47]	<Print>		-> print([VarName])
-[48]	<Read>		-> read([VarName])
+[48]	<Print>		-> print([VarName])
+[49]	<Read>		-> read([VarName])
 
 
 NOTE : Il faut encore supprimer les left-Recursion
