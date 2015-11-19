@@ -36,5 +36,31 @@ public class GrammarRules {
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.MINUS})); // Rules 25
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.TIMES})); // Rules 26
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.DIVIDE})); // Rules 27
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.IF, GrammarVariable.COND, LexicalUnit.THEN, GrammarVariable.CODE, GrammarVariable.ENDIF})); // Rules 28
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.FI})); // Rules 29
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.ELSE, GrammarVariable.CODE, LexicalUnit.FI})); // Rules 30
+		rules.add(Arrays.asList(new Enum[]{GrammarVariable.ANDCOND, GrammarVariable.COND2})); // Rules 31
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.OR, GrammarVariable.COND2})); // Rules 32
+		rules.add(new LinkedList<Enum>()); // Rules 33 // EPSILON
+		rules.add(Arrays.asList(new Enum[]{GrammarVariable.CONDTERM, GrammarVariable.ANDCOND2})); // Rules 34
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.AND, GrammarVariable.ANDCOND2})); // Rules 35
+		rules.add(new LinkedList<Enum>()); // Rules 36 // EPSILON
+		rules.add(Arrays.asList(new Enum[]{GrammarVariable.SIMPLECOND})); // Rules 37
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.NOT, GrammarVariable.SIMPLECOND})); // Rules 38
+		rules.add(Arrays.asList(new Enum[]{GrammarVariable.EXPRARITH, GrammarVariable.COMP, GrammarVariable.EXPRARITH})); // Rules 39
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.EQUAL})); // Rules 40
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.GREATER_EQUAL})); // Rules 41
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.GREATER})); // Rules 42
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.SMALLER_EQUAL})); // Rules 43
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.SMALLER})); // Rules 44
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.DIFFERENT})); // Rules 45
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.WHILE, GrammarVariable.COND, LexicalUnit.DO, GrammarVariable.CODE, LexicalUnit.OD})); // Rules 46
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.FOR, LexicalUnit.VARNAME, LexicalUnit.FROM, GrammarVariable.EXPRARITH, LexicalUnit.BY,
+											GrammarVariable.EXPRARITH, LexicalUnit.TO, GrammarVariable.EXPRARITH, LexicalUnit.DO,
+											GrammarVariable.CODE, LexicalUnit.OD})); // Rules 47
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.PRINT, LexicalUnit.LEFT_PARENTHESIS, LexicalUnit.VARNAME, 
+											LexicalUnit.RIGHT_PARENTHESIS})); // Rules 48
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.READ, LexicalUnit.LEFT_PARENTHESIS, LexicalUnit.VARNAME, 
+											LexicalUnit.RIGHT_PARENTHESIS})); // Rules 49
 	}
 }
