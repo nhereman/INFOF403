@@ -12,18 +12,20 @@ public class Main {
 		if ( args.length < 1 ) {
 			System.out.println("Error: Not enough argument");
 		} else {
+
 			File f = new File(args[0]);
 			Scanner scanner = new Scanner(f);
 			List<Symbol> symbols = scanner.getSymbols();
-			for (Symbol s : symbols) {
-				System.out.println(s.toString());
-			}
-			System.out.println("Identifiers");
 			TreeMap<String, Integer> identifiers = scanner.getIdentifiers();
-			for (Map.Entry<String,Integer> entry : identifiers.entrySet()) {
-				System.out.print(entry.getKey()+" ");
-				System.out.println(entry.getValue());
-			}
+			//for (Symbol s : symbols) {
+			//	System.out.println(s.toString());
+			//}
+			//System.out.println("Identifiers");
+			//for (Map.Entry<String,Integer> entry : identifiers.entrySet()) {
+			//	System.out.print(entry.getKey()+" ");
+			//	System.out.println(entry.getValue());
+			//}
+			Parser parser = new Parser(symbols);
 		}
 	}
 

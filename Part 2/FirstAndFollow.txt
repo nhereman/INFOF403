@@ -32,7 +32,7 @@ Follow:
 ______
 Program : {$}
 Code : {end, FIRST(EndIf), fi, od}
-InstList : {FOLLOW(Code,NextInst)}
+InstList : {FOLLOW(Code)}
 NextInst : {FOLLOW(InstList)}
 Instruction : {FIRST(NextInst)}
 Assign : {FOLLOW(Instruction)}
