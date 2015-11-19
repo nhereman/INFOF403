@@ -63,4 +63,8 @@ public class GrammarRules {
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.READ, LexicalUnit.LEFT_PARENTHESIS, LexicalUnit.VARNAME, 
 											LexicalUnit.RIGHT_PARENTHESIS})); // Rules 49
 	}
+
+	public List<Enum> getRule(int rule) {
+		return rules.get(rule-1);
+	}
 }

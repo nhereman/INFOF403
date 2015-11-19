@@ -6,6 +6,7 @@ public class Parser {
 	private Stack<Symbol> symbolsStack;
 	private Stack<Enum>	llStack;
 	private GrammarRules rules;
+	private GrammarTable table;
 
 	public Parser(List<Symbol> symbols) {
 		symbolsStack = new Stack<Symbol>();
@@ -16,5 +17,6 @@ public class Parser {
 		llStack.push(GrammarVariable.PROGRAM); // Starting state
 
 		rules = new GrammarRules();
+		table = new GrammarTable();
 	}
 }
