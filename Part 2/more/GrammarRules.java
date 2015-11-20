@@ -23,10 +23,10 @@ public class GrammarRules {
 		rules.add(Arrays.asList(new Enum[]{GrammarVariable.READ})); // Rules 12
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.VARNAME, LexicalUnit.ASSIGN, GrammarVariable.EXPRARITH})); // Rules 13
 		rules.add(Arrays.asList(new Enum[]{GrammarVariable.TERM,GrammarVariable.EXPRARITH2})); // Rules 14
-		rules.add(Arrays.asList(new Enum[]{GrammarVariable.TERMOP, GrammarVariable.EXPRARITH2})); // Rules 15
+		rules.add(Arrays.asList(new Enum[]{GrammarVariable.TERMOP, GrammarVariable.TERM,GrammarVariable.EXPRARITH2})); // Rules 15
 		rules.add(new LinkedList<Enum>()); // Rules 16 // EPSILON
 		rules.add(Arrays.asList(new Enum[]{GrammarVariable.FACTOR, GrammarVariable.TERM2})); // Rules 17
-		rules.add(Arrays.asList(new Enum[]{GrammarVariable.FACTOROP, GrammarVariable.TERM2})); // Rules 18
+		rules.add(Arrays.asList(new Enum[]{GrammarVariable.FACTOROP, GrammarVariable.FACTOR, GrammarVariable.TERM2})); // Rules 18
 		rules.add(new LinkedList<Enum>()); // Rules 19 // EPSILON
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.LEFT_PARENTHESIS, GrammarVariable.EXPRARITH, LexicalUnit.RIGHT_PARENTHESIS})); // Rules 20
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.MINUS, GrammarVariable.EXPRARITH})); // Rules 21
@@ -40,10 +40,10 @@ public class GrammarRules {
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.FI})); // Rules 29
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.ELSE, GrammarVariable.CODE, LexicalUnit.FI})); // Rules 30
 		rules.add(Arrays.asList(new Enum[]{GrammarVariable.ANDCOND, GrammarVariable.COND2})); // Rules 31
-		rules.add(Arrays.asList(new Enum[]{LexicalUnit.OR, GrammarVariable.COND2})); // Rules 32
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.OR, GrammarVariable.ANDCOND, GrammarVariable.COND2})); // Rules 32
 		rules.add(new LinkedList<Enum>()); // Rules 33 // EPSILON
 		rules.add(Arrays.asList(new Enum[]{GrammarVariable.CONDTERM, GrammarVariable.ANDCOND2})); // Rules 34
-		rules.add(Arrays.asList(new Enum[]{LexicalUnit.AND, GrammarVariable.ANDCOND2})); // Rules 35
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.AND, GrammarVariable.CONDTERM ,GrammarVariable.ANDCOND2})); // Rules 35
 		rules.add(new LinkedList<Enum>()); // Rules 36 // EPSILON
 		rules.add(Arrays.asList(new Enum[]{GrammarVariable.SIMPLECOND})); // Rules 37
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.NOT, GrammarVariable.SIMPLECOND})); // Rules 38

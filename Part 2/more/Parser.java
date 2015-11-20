@@ -7,29 +7,32 @@ import java.lang.Exception;
 
 public class Parser {
 
-	private Stack<Symbol> symbolsStack;
-	private Stack<Enum>	llStack;
+	private Stack<Symbol> _symbolsStack;
+	private Stack<Enum>	_llStack;
 	private GrammarRules rules;
 	private GrammarTable table;
-	private List<Integer> rulesList;
 
 	public Parser(List<Symbol> symbols) {
-		symbolsStack = new Stack<Symbol>();
+		_symbolsStack = new Stack<Symbol>();
 		ListIterator<Symbol> listIterator = symbols.listIterator(symbols.size());
 		while(listIterator.hasPrevious()) {
-			symbolsStack.push(listIterator.previous());
+			_symbolsStack.push(listIterator.previous());
 		}
 
-		llStack = new Stack<Enum>();
-		llStack.push(LexicalUnit.END_OF_STREAM); // End of the parse
-		llStack.push(GrammarVariable.PROGRAM); // Starting state
+		_llStack = new Stack<Enum>();
+		_llStack.push(LexicalUnit.END_OF_STREAM); // End of the parse
+		_llStack.push(GrammarVariable.PROGRAM); // Starting state
 
 		rules = new GrammarRules();
 		table = new GrammarTable();
-		rulesList = new LinkedList<Integer>();
 	}
 
-	public List<Integer> parse() throws Exception {
+	public List<Integer> parse(Stack<Symbol> symbolsStack, Stack<Enum> llStack, List<Integer> rulesList, int deep) throws Exception {
+		if (symbolsStack == null || llStack == null || rulesList == null) {
+			symbolsStack = (Stack<Symbol>) _symbolsStack.clone();
+			llStack = (Stack<Enum>) _llStack;
+			rulesList = new LinkedList<Integer>();
+		}
 		while ( !llStack.empty() ) {
 
 			if ( llStack.peek() == LexicalUnit.END_OF_STREAM) {
@@ -67,13 +70,32 @@ public class Parser {
 										" )" + "Expected : " + llStack.peek());
 				}
 
-				int ruleNb = rulesNb[0].intValue();
-				rulesList.add(new Integer(ruleNb));
-				llStack.pop();
-				List<Enum> rule = rules.getRule(ruleNb);
-				ListIterator<Enum> listIterator = rule.listIterator(rule.size());
-				while(listIterator.hasPrevious()) {
-					llStack.push(listIterator.previous());
+				boolean continu = true;
+				int i = 0;
+				while ( continu ) {
+					int ruleNb = rulesNb[i].intValue();
+					rulesList.add(new Integer(ruleNb));
+					Enum oldStack = llStack.pop();
+					List<Enum> rule = rules.getRule(ruleNb);
+					ListIterator<Enum> listIterator = rule.listIterator(rule.size());
+					while(listIterator.hasPrevious()) {
+						llStack.push(listIterator.previous());
+					}
+					if ( rulesNb.length > 1 ) {
+						try {
+							return parse((Stack<Symbol>) symbolsStack.clone(), (Stack<Enum>) llStack.clone(), new LinkedList<Integer>(rulesList), deep+1);
+						} catch( Exception e ) {
+							for ( Enum en : rule ) {
+								llStack.pop();
+							}
+							llStack.push(oldStack);
+							rulesList.remove(rulesList.size()-1);
+							++i;
+							if ( i == rulesNb.length ) { throw e;}
+						}
+					} else {
+						continu = false;
+					}
 				}
 
 			}
@@ -81,5 +103,10 @@ public class Parser {
 		}
 
 		return rulesList;
+	}
+
+
+	public List<Integer> parse() throws Exception {
+		return parse(null,null, null, 0);
 	}
 }

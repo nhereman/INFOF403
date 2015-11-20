@@ -66,13 +66,17 @@ public class GrammarTable {
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.VARNAME, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.NUMBER, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.END, new Integer[]{16});
+		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.SEMICOLON, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.LEFT_PARENTHESIS, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.RIGHT_PARENTHESIS, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.MINUS, new Integer[]{15,16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.PLUS, new Integer[]{15,16});
+		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.TIMES, new Integer[]{16});
+		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.DIVIDE, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.THEN, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.FI, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.ELSE, new Integer[]{16});
+		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.NOT, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.AND, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.OR, new Integer[]{16});
 		table.get(GrammarVariable.EXPRARITH2).put(LexicalUnit.EQUAL, new Integer[]{16});
@@ -95,10 +99,28 @@ public class GrammarTable {
 
 		// Term 2 :
 		table.put(GrammarVariable.TERM2 ,new HashMap<LexicalUnit, Integer[]>());
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.END, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.SEMICOLON, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.RIGHT_PARENTHESIS, new Integer[]{19});
 		table.get(GrammarVariable.TERM2).put(LexicalUnit.MINUS, new Integer[]{19});
 		table.get(GrammarVariable.TERM2).put(LexicalUnit.PLUS, new Integer[]{19});
-		table.get(GrammarVariable.TERM2).put(LexicalUnit.TIMES, new Integer[]{18});
-		table.get(GrammarVariable.TERM2).put(LexicalUnit.DIVIDE, new Integer[]{18});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.TIMES, new Integer[]{18,19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.DIVIDE, new Integer[]{18,19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.THEN, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.FI, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.ELSE, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.AND, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.OR, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.EQUAL, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.GREATER_EQUAL, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.GREATER, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.SMALLER_EQUAL, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.SMALLER, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.DIFFERENT, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.DO, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.OD, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.BY, new Integer[]{19});
+		table.get(GrammarVariable.TERM2).put(LexicalUnit.TO, new Integer[]{19});
 
 		// Factor :
 		table.put(GrammarVariable.FACTOR ,new HashMap<LexicalUnit, Integer[]>());

@@ -12,10 +12,10 @@
 [12]			-> <Read>
 [13]	<Assign>	-> [VarName] := <ExprArith>
 [14]	<ExprArith>	-> <Term> <ExprArith2>
-[15]	<ExprArith2>	-> <TermOp> <ExprArith2>
+[15]	<ExprArith2>	-> <TermOp> <Term> <ExprArith2>
 [16]			-> Epsilon
 [17]	<Term>		-> <Factor> <Term2>
-[18]	<Term2>		-> <FactorOp> <Term2>
+[18]	<Term2>		-> <FactorOp> <Factor> <Term2>
 [19]			-> Epsilon
 [20]	<Factor>	-> (<ExprArith>)
 [21]			-> - <ExprArith>
@@ -29,10 +29,10 @@
 [29]	<EndIf>		-> fi
 [30]			-> else <Code> fi
 [31]	<Cond>		-> <AndCond> <Cond2>
-[32]	<Cond2>		-> or <Cond2>
+[32]	<Cond2>		-> or <AndCond> <Cond2>
 [33]			-> Epsilon
 [34]	<AndCond>	-> <CondTerm> <AndCond2>
-[35]	<AndCond2>	-> and <AndCond2>
+[35]	<AndCond2>	-> and <CondTerm> <AndCond2>
 [36]			-> Epsilon
 [37]	<CondTerm>	-> <SimpleCond>
 [38]			-> not <SimpleCond>

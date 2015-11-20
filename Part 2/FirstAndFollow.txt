@@ -9,7 +9,7 @@ Assign : {VarName}
 ExprArith : {FIRST(Term)}
 ExprArith2 : {Epsilon, FIRST(TermOp)}
 Term : {FIRST(Factor)}
-Term2 : {Epsilon, FIRST(FACTOR)}
+Term2 : {Epsilon, FIRST(FACTOROP)}
 Factor : {(, -, VarName, Number}
 TermOp : {+, -}
 FactorOp : {*, /}
