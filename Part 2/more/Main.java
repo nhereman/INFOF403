@@ -5,6 +5,7 @@ import java.util.TreeMap;
 import java.util.Map;
 import java.util.List;
 import java.util.regex.PatternSyntaxException;
+import java.lang.Exception;
 
 public class Main {
 
@@ -17,15 +18,17 @@ public class Main {
 			Scanner scanner = new Scanner(f);
 			List<Symbol> symbols = scanner.getSymbols();
 			TreeMap<String, Integer> identifiers = scanner.getIdentifiers();
-			//for (Symbol s : symbols) {
-			//	System.out.println(s.toString());
-			//}
-			//System.out.println("Identifiers");
-			//for (Map.Entry<String,Integer> entry : identifiers.entrySet()) {
-			//	System.out.print(entry.getKey()+" ");
-			//	System.out.println(entry.getValue());
-			//}
-			Parser parser = new Parser(symbols);
+
+			try {
+				Parser parser = new Parser(symbols);
+				List<Integer> ruleList = parser.parse();
+				for (Integer rule : ruleList ) {
+					System.out.println(rule);
+				}
+			} catch ( Exception e )	{
+				System.out.println(e.getMessage());
+			}
+			
 		}
 	}
 

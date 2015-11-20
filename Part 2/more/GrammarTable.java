@@ -33,6 +33,14 @@ public class GrammarTable {
 		table.get(GrammarVariable.INSTLIST).put(LexicalUnit.PRINT, new Integer[]{4});
 		table.get(GrammarVariable.INSTLIST).put(LexicalUnit.READ, new Integer[]{4});
 
+		// NextInst : 
+		table.put(GrammarVariable.NEXTINST ,new HashMap<LexicalUnit, Integer[]>());
+		table.get(GrammarVariable.NEXTINST).put(LexicalUnit.END, new Integer[]{5});
+		table.get(GrammarVariable.NEXTINST).put(LexicalUnit.SEMICOLON, new Integer[]{6});
+		table.get(GrammarVariable.NEXTINST).put(LexicalUnit.FI, new Integer[]{5});
+		table.get(GrammarVariable.NEXTINST).put(LexicalUnit.ELSE, new Integer[]{5});
+		table.get(GrammarVariable.NEXTINST).put(LexicalUnit.OD, new Integer[]{5});
+
 		// Instruction :
 		table.put(GrammarVariable.INSTRUCTION ,new HashMap<LexicalUnit, Integer[]>());
 		table.get(GrammarVariable.INSTRUCTION).put(LexicalUnit.VARNAME, new Integer[]{7});
@@ -192,7 +200,7 @@ public class GrammarTable {
 
 	public Integer[] getRules(GrammarVariable var, LexicalUnit lex) {
 		if ( !table.get(var).containsKey(lex) ) {
-			return new Integer[]{-1};
+			return new Integer[]{};
 		} else {
 			return table.get(var).get(lex);
 		}
