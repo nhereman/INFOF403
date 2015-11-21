@@ -1,3 +1,6 @@
+/**
+*	Enumeration of all variable for the Grammar.
+*/
 public enum GrammarVariable {
 	PROGRAM,
 	CODE,

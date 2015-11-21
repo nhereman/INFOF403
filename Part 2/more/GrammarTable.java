@@ -1,9 +1,16 @@
 import java.util.HashMap;
 
+/**
+*	A class who manage the GrammarTable used for the LL(1) parser.
+*
+*/
 public class GrammarTable {
 
 	private HashMap<GrammarVariable, HashMap<LexicalUnit, Integer[]> > table;
 
+	/**
+	*	The constructor of the class
+	*/
 	public GrammarTable() {
 		table = new HashMap<GrammarVariable, HashMap<LexicalUnit, Integer[]> >();
 
@@ -220,6 +227,14 @@ public class GrammarTable {
 	}
 
 
+	/**
+	*	Give a list of all the rules numbers corresponding to the parameters.
+	*	@param var A GrammarVariable found in the LL(1) parser stack.
+	*	@param lex A LexicalUnit found in the list of scanned symbols.
+	*	@return a list of all the rules numbers corresponding to the parameters. An empty list if there is no corresponding rule.
+	*	@see GrammarVariable
+	*	@see GrammarRules
+	*/
 	public Integer[] getRules(GrammarVariable var, LexicalUnit lex) {
 		if ( !table.get(var).containsKey(lex) ) {
 			return new Integer[]{};

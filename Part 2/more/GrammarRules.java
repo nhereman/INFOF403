@@ -2,10 +2,19 @@ import java.util.List;
 import java.util.LinkedList;
 import java.util.Arrays;
 
+/**
+*	This class manage all the rules of the grammar.
+*
+*/
 public class GrammarRules {
 
 	private List< List<Enum> > rules;
 
+	/**
+	*	The constructor of the class.
+	*	It initialize all the rules.
+	*
+	*/
 	public GrammarRules() {
 		rules = new LinkedList< List<Enum> >();
 
@@ -64,6 +73,13 @@ public class GrammarRules {
 											LexicalUnit.RIGHT_PARENTHESIS})); // Rules 49
 	}
 
+
+	/**
+	*	Give the corresponding rule.
+	*	@param rule The number of the expected rule.
+	*	@return The list of GrammarVariable/LexicalUnit of the rule.
+	*	@see GrammarVariable
+	*/
 	public List<Enum> getRule(int rule) {
 		return rules.get(rule-1);
 	}
