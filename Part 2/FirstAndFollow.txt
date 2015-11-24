@@ -9,7 +9,7 @@ Assign : {VarName}
 ExprArith : {FIRST(Term)}
 ExprArith2 : {Epsilon, FIRST(TermOp)}
 Term : {FIRST(Factor)}
-Term2 : {Epsilon, FIRST(FACTOROP)}
+Term2 : {Epsilon, FIRST(FactorOp)}
 Factor : {(, -, VarName, Number}
 TermOp : {+, -}
 FactorOp : {*, /}
@@ -41,8 +41,8 @@ ExprArith2 : {FOLLOW(ExprArith)}
 Term : {FIRST(ExprArith2)}
 Term2 : {FOLLOW(Term)}
 Factor : {FIRST(Term2)}
-TermOp : {FIRST(ExprArith2)}
-FactorOp : {FIRST(Term2)}
+TermOp : {FIRST(Term)}
+FactorOp : {FIRST(Factor)}
 If : {FOLLOW(Instruction)}
 EndIf : {FOLLOW(If)}
 Cond : {then, do}
