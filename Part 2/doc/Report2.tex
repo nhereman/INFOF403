@@ -38,10 +38,15 @@ Removing unreachable and/or unproductive variables wasn't much of an issue but o
 
 \section{The action table}
 
-To have the action table, we first needed to calculate the first and follow sets. Our grammar is LL(1), this means that LL(1) parsing uses only one symbol of input to predict the next grammar rule that should be used. Therefore each cell of our action table contains at most one rule.
+Tobuild the action table, we first needed to calculate the first and follow sets. First(X) is made by taking the set of strings of terminals of maximum length which can start a string generated from X. Follow(X) is made by taking the set of strings of terminals of maximum length which can follow a string generated from X. This first and follow sets will help us to fill the action table.
 
 
 \verbatiminput{../FirstAndFollow.txt}
+
+\hfil\\
+Now that we have our first and follow sets, we can build our action table. This is how we fill the table :\\ For each token in First(X), we add the corresponding rule to the corresponding cell in the table. If epsilon is in First(X), for each token in Follow(X), we add the corresponding rule to the corresponding cell in the table.\\
+Our grammar is LL(1), this means that LL(1) parsing uses only one symbol of input to predict the next grammar rule that should be used. Therefore each cell of our action table contains at most one rule. This table will help us to decide which decision should be made if a given nonterminal N is at the top of the parsing stack, based on the current input symbol.
+
 
 \includepdf[landscape=true]{TableauLL1.pdf}
 
