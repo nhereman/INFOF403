@@ -1,0 +1,22 @@
+<Cond>		->	<Cond> or <AndCond>
+		->	<AndCond>
+<AndCond>	->	<AndCond> and <CondTerm>
+		->	<CondTerm>
+<CondTerm>	->	<SimpleCond>
+		->	not <SimpleCond>
+
+
+
+
+<ExprArith>	->	<ExprArith> <TermOp> <Term>
+		->	<Term>
+<Term>		->	<Term> <FactorOp> <Factor>
+		->	<Factor>
+<Factor>	->	(<ExprArith>)
+		->	- <ExprArith>
+		->	[VarName]
+		->	[Number]
+<TermOp>	->	+
+		->	-
+<FactorOp>	->	*
+		->	/
