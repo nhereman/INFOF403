@@ -1,0 +1,32 @@
+define void @putInt(i32 %a) {
+entry:
+	%size = allocate i32
+	store i32 1, i32* %size
+	br label negativetest
+negativetest:
+	%0 = cmp slt i32 %a, 0
+	br i1 %0, label %minus, label %sizecmp
+minus:
+	call i32 @putchar(i32 45); print minus
+computesize:
+	%1 = load i32* %size
+	%2 = mul i32 %1, 10
+	store i32 %2, i32* %size
+	br label sizecmp
+sizecmp:
+	%3 = load i32* %size
+	%4 = icmp ugt i32 %3, %a
+	br i1 %4, label %printloop, label %computesize
+printloop:
+	%5 = load i32* %size
+	%6 = udiv i32 %5, 10
+	store i32 %6, i32* %size
+	%7 = udiv i32 %a, %6
+	%8 = urem i32 %7, 10
+	%9 = add i32 %8, 48
+	call i32 @putchar(i32 %8)
+	%10 = cmp ugt i32 %6, 0
+	br i1 %10, label %printloop, label %exit
+exit:
+	ret void
+}
