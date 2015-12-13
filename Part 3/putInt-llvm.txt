@@ -1,32 +1,41 @@
+; Defining a function wich print integer
 define void @putInt(i32 %a) {
 entry:
-	%size = allocate i32
+	%size = alloca i32
+	%int = alloca i32
 	store i32 1, i32* %size
-	br label negativetest
+	store i32 %a, i32* %int
+	br label %negativetest
 negativetest:
-	%0 = cmp slt i32 %a, 0
+	%0 = icmp slt i32 %a, 0
 	br i1 %0, label %minus, label %sizecmp
 minus:
-	call i32 @putchar(i32 45); print minus
+	call i32 @putchar(i32 45)
+	%2 = load i32* %int
+	%3 = mul i32 %2, -1
+	store i32 %3, i32* %int
+	br label %sizecmp
 computesize:
-	%1 = load i32* %size
-	%2 = mul i32 %1, 10
-	store i32 %2, i32* %size
-	br label sizecmp
+	%4 = load i32* %size
+	%5 = mul i32 %4, 10
+	store i32 %5, i32* %size
+	br label %sizecmp
 sizecmp:
-	%3 = load i32* %size
-	%4 = icmp ugt i32 %3, %a
-	br i1 %4, label %printloop, label %computesize
+	%6 = load i32* %size
+	%i = load i32* %int
+	%7 = icmp ugt i32 %6, %i
+	br i1 %7, label %printloop, label %computesize
 printloop:
-	%5 = load i32* %size
-	%6 = udiv i32 %5, 10
-	store i32 %6, i32* %size
-	%7 = udiv i32 %a, %6
-	%8 = urem i32 %7, 10
-	%9 = add i32 %8, 48
-	call i32 @putchar(i32 %8)
-	%10 = cmp ugt i32 %6, 0
-	br i1 %10, label %printloop, label %exit
+	%j = load i32* %int
+	%8 = load i32* %size
+	%9 = udiv i32 %8, 10
+	store i32 %9, i32* %size
+	%10 = udiv i32 %j, %9
+	%11 = urem i32 %10, 10
+	%12 = add i32 %11, 48
+	call i32 @putchar(i32 %12)
+	%14 = icmp ugt i32 %9, 1
+	br i1 %14, label %printloop, label %exit
 exit:
 	ret void
 }

@@ -1,34 +1,31 @@
 ; Defining a function wich read integer
 define i32 @readInt() {
 entry:
-	%res = allocate i32
-	%digit = allocate i32
-	%mult = allocate i32
+	%res = alloca i32
+	%digit = alloca i32
+	%mult = alloca i32
 	store i32 0, i32* %res
 	store i32 1, i32* %mult
 	br label %read
 read:
 	%0 = call i32 @getchar()
-	%1 = icmp eq i32 %0, 45
-	br i1 %1, label %getdigit, label %getminus
-getdigit:
-	%2 = sub i32 %0, 48
-	store i32 %2, i32* %digit
-	%3 = icmp ne i32 %0, 10
-	br i1 %3, label %save, label %exit
+	%1 = sub i32 %0, 48
+	store i32 %1, i32* %digit
+	%2 = icmp ne i32 %0, 10
+	br i1 %2, label %save, label %exit
 save:
-	%4 = load i32* %res
-	%5 = load i32* %digit
-	%6 = mul i32 %4, 10
-	%7 = add i32 %6; %5
-	store i32 %7, i32* %res
+	%3 = load i32* %res
+	%4 = load i32* %digit
+	%5 = mul i32 %3, 10
+	%6 = add i32 %5, %4
+	store i32 %6, i32* %res
 	br label %read
 getminus:
 	store i32 -1, i32* %mult
 	br label %read
 exit:
-	%8 = load i32* %res
-	%9 = load i32* %mult
-	%10 = mul i32 %8, %9
-	ret i32 %10
+	%7 = load i32* %res
+	%8 = load i32* %mult
+	%9 = mul i32 %7, %8
+	ret i32 %9
 }
