@@ -108,6 +108,8 @@ public class LLVMWriter {
 		_lines.add("\t%"+(new Integer(_count)).toString()+" = load i32* %"+var);
 		++_count;
 		_lines.add("\tcall void @putInt(i32 %"+(new Integer(_count-1)).toString()+")");
+		_lines.add("\tcall i32 @putchar(i32 10)"); // print end of line
+		++_count;
 	}
 
 	private void rule49() {

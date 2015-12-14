@@ -1,4 +1,3 @@
-LLVM code :
 ; External function declaration
 declare i32 @getchar()
 declare i32 @putchar(i32)
@@ -89,8 +88,10 @@ define i32 @main() {
 	; print var
 	%3 = load i32* %a
 	call void @putInt(i32 %3)
+	call i32 @putchar(i32 10)
 	; print var
-	%4 = load i32* %b
-	call void @putInt(i32 %4)
+	%5 = load i32* %b
+	call void @putInt(i32 %5)
+	call i32 @putchar(i32 10)
 	ret i32 0
 }
