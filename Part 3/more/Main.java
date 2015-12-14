@@ -26,6 +26,7 @@ public class Main {
 				printReadIntFunc();
 				printPutIntFunc();
 				List<Integer> ruleList = parser.parse();
+				parser.writeLLVM();
 				System.out.println("List of rules of parser :");
 				for (Integer rule : ruleList ) {
 					System.out.println(rule);

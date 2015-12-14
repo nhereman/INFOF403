@@ -17,6 +17,8 @@ public class Parser {
 	private Stack<Enum>	_llStack;
 	private GrammarRules rules;
 	private GrammarTable table;
+	private List<Integer> rulesList;
+	private List<Symbol> _symbols;
 
 	/**
 	*	Parser constructor
@@ -28,6 +30,7 @@ public class Parser {
 		while(listIterator.hasPrevious()) {
 			_symbolsStack.push(listIterator.previous());
 		}
+		_symbols = new LinkedList<Symbol>(symbols);
 
 		_llStack = new Stack<Enum>();
 		_llStack.push(LexicalUnit.END_OF_STREAM); // End of the parse
@@ -35,6 +38,7 @@ public class Parser {
 
 		rules = new GrammarRules();
 		table = new GrammarTable();
+		rulesList = new LinkedList<Integer>();
 	}
 
 	/**
@@ -43,8 +47,6 @@ public class Parser {
 	*	@throws Exception If an unexpected symbol is found.
 	*/
 	public List<Integer> parse() throws Exception {
-		
-		List<Integer> rulesList = new LinkedList<Integer>();
 
 		while ( !_llStack.empty() ) {
 
@@ -101,6 +103,11 @@ public class Parser {
 		}
 
 		return rulesList;
+	}
+
+	public void writeLLVM() {
+		LLVMWriter llvm = new LLVMWriter(_symbols, rulesList);
+		llvm.write();
 	}
 
 }
