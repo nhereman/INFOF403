@@ -1,0 +1,5 @@
+left = number of last register // the result of the last comparaison is stored there
+Apply <CondTerm> rule
+right = number of last register // the result of <CondTerm> is stored there
+Write LLVM and between left and right register
+Apply <AndCond2> rule

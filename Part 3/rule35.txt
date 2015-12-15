@@ -1,0 +1,1 @@
+[35]	<AndCond2>	->	and <CondTerm> <AndCond2>
