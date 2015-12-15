@@ -105,6 +105,9 @@ public class Parser {
 		return rulesList;
 	}
 
+	/**
+	*	Write LLVM code on the standard output
+	*/
 	public void writeLLVM() {
 		LLVMWriter llvm = new LLVMWriter(_symbols, rulesList);
 		llvm.write();

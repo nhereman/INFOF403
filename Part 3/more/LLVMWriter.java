@@ -1,6 +1,10 @@
 import java.util.List;
 import java.util.LinkedList;
 
+
+/**
+*	LLVM code generator
+*/
 public class LLVMWriter {
 
 	private List<Symbol> _symbols;
@@ -16,6 +20,11 @@ public class LLVMWriter {
 	private boolean _hasRead = false;
 	private boolean _hasPrint = false;
 
+	/**
+	*	Constructor
+	*	@param symbols The list of all symbols parsed
+	*	@param parsingRules The syntax tree
+	*/
 	public LLVMWriter(List<Symbol> symbols, List<Integer> parsingRules) {
 		_symbols = new LinkedList<Symbol>(symbols);
 		_parsingRules = new LinkedList<Integer>(parsingRules);
@@ -25,17 +34,18 @@ public class LLVMWriter {
 		executeRules();
 	}
 
+	/**
+	*	Launch the execution of all rules of the syntax tree.
+	*/
 	private void executeRules() {
 		if (_parsingRules.get(_rule) == 1) { rule1(); }
 	}
 
-	/*
-	*		RULES methods
-	*
+	/**
+	*	Generate code for rule 1
+	*	<Program> 	->	begin <Code> end
 	*/
-
 	private void rule1() {
-		// <Program> 	->	begin <Code> end
 		++_rule;
 		++_sym; // begin
 
@@ -51,16 +61,22 @@ public class LLVMWriter {
 		_lines.add("}");
 	}
 
+	/**
+	*	Generate the code for rule 3
+	*	<Code> 	->	<InstList>
+	*/
 	private void rule3() {
-		// <Code> 	->	<InstList>
 		++_rule;
 
 		// <InstList>
 		if(_parsingRules.get(_rule) == 4) { rule4(); }
 	}
 
+	/**
+	*	Generate the code for rule 4
+	*	<InstList>	->	<Instruction> <NextInst>
+	*/
 	private void rule4() {
-		// <InstList>	->	<Instruction> <NextInst>
 		++_rule;
 
 		// <Instruction>
@@ -76,8 +92,11 @@ public class LLVMWriter {
 		else if ( _parsingRules.get(_rule) == 6) { rule6(); }
 	}
 
+	/**
+	*		Generate the code for rule 6
+	*		<NextInst>	->	; <InstList>
+	*/
 	private void rule6() {
-		// <NextInst>	->	; <InstList>
 		++_rule;
 
 		++_sym; // ;
@@ -86,30 +105,43 @@ public class LLVMWriter {
 		if ( _parsingRules.get(_rule) == 4 ) { rule4(); }
 	}
 
+	/**
+	*	Generate code for rule 7
+	*	<Instruction>	->	<Assign>
+	*/
 	private void rule7() {
-		// <Instruction>	->	<Assign>
 		++_rule;
 
 		// <Assign>
 		if ( _parsingRules.get(_rule) == 13 ) { rule13(); }
 	}
 
+	/**
+	*	Generate code for rule 8
+	*	<Instruction>	-> <If>
+	*/
 	private void rule8() {
-		// <Instruction>	-> <If>
 		++_rule;
 
 		// <If>
 		if ( _parsingRules.get(_rule) == 28 ) { rule28(); }
 	}
 
+	/**
+	*	Generate code for rule 9
+	*	<Instruction>	-> <While>
+	*/
 	private void rule9() {
-		// <Instruction>	-> <While>
 		++_rule;
 
 		// <While>
 		if (_parsingRules.get(_rule) == 46 ) { rule46(); }
 	}
 
+	/**
+	*	Generate code for rule 10
+	*	<Instruction>	-> <For>
+	*/
 	private void rule10() {
 		// <Instruction>	-> <For>
 		++_rule;
@@ -119,6 +151,10 @@ public class LLVMWriter {
 
 	}
 
+	/**
+	*	Generate code for rule 11
+	*	<Instruction>	-> <Print>
+	*/
 	private void rule11() {
 		// <Instruction> 	->	<Print>
 		++_rule;
@@ -127,6 +163,10 @@ public class LLVMWriter {
 		if (_parsingRules.get(_rule) == 48) { rule48(); }
 	}
 
+	/**
+	*	Generate code for rule 12
+	*	<Instruction>	-> <Read>
+	*/
 	private void rule12() {
 		// <Instruction>	-> 	<Read>
 		++_rule;
@@ -135,8 +175,11 @@ public class LLVMWriter {
 		if (_parsingRules.get(_rule) == 49) { rule49(); }
 	}
 
+	/**
+	*	Generate code for rule 13
+	*	<Assign>		-> [VarName] := <ExprArith>
+	*/
 	private void rule13() {
-		// <Assign>		-> [VarName] := <ExprArith>
 		++_rule;
 
 		String var = _symbols.get(_sym).getValue().toString();
@@ -151,8 +194,11 @@ public class LLVMWriter {
 
 	}
 
+	/**
+	*	Generate code for rule 14
+	*	<ExprArith>	->	<Term> <ExprArith2>
+	*/
 	private void rule14() {
-		// <ExprArith>	->	<Term> <ExprArith2>
 		++_rule;
 
 		// <Term>
@@ -164,8 +210,11 @@ public class LLVMWriter {
 
 	}
 
+	/**
+	*	Generate code for rule 15
+	*	<ExprArith2> -> <TermOp> <Term> <ExprArith2>
+	*/
 	private void rule15() {
-		// <ExprArith2> -> <TermOp> <Term> <ExprArith2>
 		++_rule;
 
 		String left = (new Integer(_count-1)).toString();
@@ -173,12 +222,11 @@ public class LLVMWriter {
 		// <TermOp>
 		String op = new String();
 		if (_parsingRules.get(_rule) == 24) {
-			rule24();
 			op = "add";
 		} else if (_parsingRules.get(_rule) == 25) {
-			rule25();
 			op = "sub";
 		}
+		rule24to27();
 
 		// <Term>
 		if (_parsingRules.get(_rule) == 17) { rule17(); }
@@ -194,8 +242,11 @@ public class LLVMWriter {
 
 	}
 
+	/**
+	*	Generate code for rule 17
+	*	<Term>	->	<Factor> <Term2>
+	*/
 	private void rule17() {
-		// <Term>	->	<Factor> <Term2>
 		++_rule;
 
 		// <Factor>
@@ -209,8 +260,11 @@ public class LLVMWriter {
 		else if (_parsingRules.get(_rule) == 19) { ++_rule; } // -> Epsilon
 	}
 
+	/**
+	*	Generate code for rule 18
+	*	<Term2>	->	<FactorOp>	<Factor> <Term2>
+	*/
 	private void rule18() {
-		// <Term2>	->	<FactorOp>	<Factor> <Term2>
 		++_rule;
 
 		String left = (new Integer(_count-1)).toString();
@@ -218,12 +272,11 @@ public class LLVMWriter {
 		// <FactorOp>
 		String op = new String();
 		if (_parsingRules.get(_rule) == 26) {
-			rule26();
 			op = "mul";
 		} else if (_parsingRules.get(_rule) == 27) {
-			rule27();
 			op = "sdiv";
 		}
+		rule24to27();
 
 		// <Factor>
 		if (_parsingRules.get(_rule) == 20) { rule20(); }
@@ -241,8 +294,11 @@ public class LLVMWriter {
 
 	}
 
+	/**
+	*	Generate code for rule 20
+	*	<Factor>		->	(<ExprArith>)
+	*/
 	private void rule20() {
-		// <Factor>		->	(<ExprArith>)
 		++_rule;
 
 		++_sym; // (
@@ -253,8 +309,11 @@ public class LLVMWriter {
 		++_sym; // )
 	}
 
+	/**
+	*	Generate code for rule 21
+	*	<Factor>	->	- <Factor>
+	*/
 	private void rule21() {
-		// <Factor>	->	- <Factor>
 		++_rule;
 
 		++_sym; // -
@@ -269,8 +328,11 @@ public class LLVMWriter {
 		++_count;
 	}
 
+	/**
+	*	Generate code for rule 22
+	*	<Factor>	->	[VarName]
+	*/
 	private void rule22() {
-		// <Factor>	->	[VarName]
 		++_rule;
 
 		String var = _symbols.get(_sym).getValue().toString();
@@ -281,8 +343,11 @@ public class LLVMWriter {
 
 	}
 
+	/**
+	*	Generate code for rule 23
+	*	<Factor>	->	[Number]
+	*/
 	private void rule23() {
-		// <Factor>	->	[Number]
 		++_rule;
 
 		String number = _symbols.get(_sym).getValue().toString();
@@ -293,32 +358,21 @@ public class LLVMWriter {
 		++_count;
 	}
 
-	private void rule24() {
-		// <TermOp>	->	+
+	/**
+	*	Generate code for rule 24 to 27
+	*	<TermOp>	->	+ or -
+	*	or <FactorOp>	-> * or /
+	*/
+	private void rule24to27() {
 		++_rule;
 		++_sym; // +
 	}
 
-	private void rule25() {
-		// <TermOp>	->	-
-		++_rule;
-		++_sym; // -
-	}
-
-	private void rule26() {
-		// <FactorOp>	->	*
-		++_rule;
-		++_sym; // *
-	}
-
-	private void rule27() {
-		// <FactorOp>	->	/
-		++_rule;
-		++_sym; // /
-	}
-
+	/**
+	*	Generate code for rule 28
+	*	<If>	-> if <Cond> then <Code> <EndIf>
+	*/
 	private void rule28() {
-		// <If>	-> if <Cond> then <Code> <EndIf>
 		++_rule;
 
 		++_sym; // if
@@ -345,8 +399,12 @@ public class LLVMWriter {
 
 	}
 
+	/**
+	*	Generate code for rule 29
+	*	<EndIf>	-> fi
+	*	@param ifCount the id of the if
+	*/
 	private void rule29(String ifCount) {
-		// <EndIf>	-> fi
 		++_rule;
 
 		++_sym; // fi
@@ -357,8 +415,12 @@ public class LLVMWriter {
 		_lines.add("endif"+ifCount+":");
 	}
 
+	/**
+	*	Generate code for rule 30
+	*	<EndIf>	-> else <Code> fi
+	*	@param ifCount the id of the if
+	*/
 	private void rule30(String ifCount) {
-		// <EndIf>	-> else <Code> fi
 		++_rule;
 
 		++_sym; // else
@@ -375,8 +437,11 @@ public class LLVMWriter {
 		_lines.add("endif"+ifCount+":");
 	}
 
+	/**
+	*	Generate code for rule 31
+	*	<Cond>	->	<AndCond>	<Cond2>
+	*/
 	private void rule31() {
-		// <Cond>	->	<AndCond>	<Cond2>
 		++_rule;
 
 		// <AndCond>
@@ -387,8 +452,11 @@ public class LLVMWriter {
 		else if (_parsingRules.get(_rule) == 33) { ++_rule; } // -> Epsilon
 	}
 
+	/**
+	*	Generate code for rule 32
+	*	<Cond2>	->	or <AndCond> <Cond2>
+	*/
 	private void rule32() {
-		// <Cond2>	->	or <AndCond> <Cond2>
 		++_rule;
 
 		++_sym; // or
@@ -407,8 +475,11 @@ public class LLVMWriter {
 
 	}
 
+	/**
+	*	Generate code for rule 34
+	*	<AndCond>	->	<CondTerm>	<AndCond2>
+	*/
 	private void rule34() {
-		// <AndCond>	->	<CondTerm>	<AndCond2>
 		++_rule;
 
 		// <CondTerm>
@@ -420,8 +491,11 @@ public class LLVMWriter {
 		else if (_parsingRules.get(_rule) == 36) { ++_rule; } // -> Epsilon
 	}
 
+	/**
+	*	Generate code for rule 35
+	*	<AndCond2>	->	and <CondTerm> <AndCond2>
+	*/
 	private void rule35() {
-		// <AndCond2>	->	and <CondTerm> <AndCond2>
 		++_rule;
 
 		++_sym; // and
@@ -440,16 +514,22 @@ public class LLVMWriter {
 		else if (_parsingRules.get(_rule) == 36) { ++_rule; } // -> Epsilon
 	}
 
+	/**
+	*	Generate code for rule 37
+	*	<CondTerm>	->	<SimpleCond>
+	*/
 	private void rule37() {
-		// <CondTerm>	->	<SimpleCond>
 		++_rule;
 
 		// <SimpleCond>
 		if (_parsingRules.get(_rule) == 39) { rule39(); }
 	}
 
+	/**
+	*	Generate code for rule 38
+	*	<CondTerm>	->	not <SimpleCond>
+	*/
 	private void rule38() {
-		// <CondTerm>	->	not <SimpleCond>
 		++_rule;
 
 		++_sym; // not
@@ -463,8 +543,11 @@ public class LLVMWriter {
 		++_count;
 	}
 
+	/**
+	*	Generate code for rule 39
+	*	<SimpleCond>		-> 	<ExprArith> <Comp>	<ExprArith>
+	*/
 	private void rule39() {
-		// <SimpleCond>		-> 	<ExprArith> <Comp>	<ExprArith>
 		++_rule;
 
 		// <ExprArith>
@@ -491,14 +574,21 @@ public class LLVMWriter {
 
 	}
 
+	/**
+	* 	Generate code for rule 40 to 45
+	* 	<Comp> -> comparator
+	*/
 	private void rule40To45() {
 		// <Comp> -> comp
 		++_rule;
 		++_sym; // comp
 	}
 
+	/**
+	*	Generate code for rule 46
+	*	<While>	->	while <Cond> do <Code> od
+	*/
 	private void rule46() {
-		// <While>	->	while <Cond> do <Code> od
 		++_rule;
 
 		++_sym; // while
@@ -529,8 +619,11 @@ public class LLVMWriter {
 
 	}
 
+	/**
+	*	Generate code for rule 47
+	*	<For>	->	for [VarName] from <ExprArith> by <ExprArith> to <ExprArith> do <Code> od
+	*/
 	private void rule47() {
-		// <For>	->	for [VarName] from <ExprArith> by <ExprArith> to <ExprArith> do <Code> od
 		++_rule;
 
 		_lines.add("\t; for statement");
@@ -594,8 +687,11 @@ public class LLVMWriter {
 		_lines.add("endfor"+forCount+":");
 	}
 
+	/**
+	*	Generate code for rule 48
+	*	<Print>	->	print([VarName])
+	*/
 	private void rule48() {
-		// <Print>	->	print([VarName])
 		++_rule;
 
 		_hasPrint = true;
@@ -614,8 +710,11 @@ public class LLVMWriter {
 		++_count;
 	}
 
+	/**
+	*	Generate code for rule 49
+	*	<Read>	->	read([VarName])
+	*/
 	private void rule49() {
-		// <Read>	->	read([VarName])
 		++_rule;
 
 		_hasRead = true;
@@ -635,11 +734,9 @@ public class LLVMWriter {
 		_lines.add("\tstore i32 %"+(new Integer(_count-1)).toString()+", i32* %"+var);
 	}
 
-
-
-
-	/*
-	*		Manage vars methods
+	/**
+	*	Generate code to allocate the var if needed
+	*	@param var The variable to allocate
 	*/
 	private void allocateVar(String var) {
 		if (!varExists(var)) {
@@ -648,16 +745,18 @@ public class LLVMWriter {
 		}
 	}
 
+	/**
+	*	Check if the var is already allocated
+	*	@param var The variable to check
+	*	@return	boolean : True if already allocated, false if not.
+	*/
 	private boolean varExists(String var) {
 		return _vars.contains(var);
 	}
 
-
-
-	/*
-	*		Writing LLVM methods
+	/**
+	*	Write the generated code on the standard output
 	*/
-
 	public void write() {
 		printLlvmHeader();
 		if(_hasRead) { printReadIntFunc(); }
@@ -667,6 +766,9 @@ public class LLVMWriter {
 		}
 	}
 
+	/**
+	*	Write LLVM header on standard output if needed
+	*/
 	private void printLlvmHeader() {
 		System.out.println("; External function declaration");
 		if (_hasRead) { System.out.println("declare i32 @getchar()"); }
@@ -674,6 +776,9 @@ public class LLVMWriter {
 		System.out.println(""); // Skip a line
 	}
 
+	/**
+	*	Write readInt function on standard output
+	*/
 	private void printReadIntFunc() {
 		System.out.println("; Defining a function wich read integer");
 		System.out.println("define i32 @readInt() {");
@@ -720,6 +825,9 @@ public class LLVMWriter {
 		System.out.println("}\n");
 	}
 
+	/**
+	*	Write putInt function on standard output
+	*/
 	private void printPutIntFunc() {
 		System.out.println("; Defining a function wich print integer");
 		System.out.println("define void @putInt(i32 %a) {");
