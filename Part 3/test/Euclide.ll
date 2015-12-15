@@ -86,39 +86,43 @@ define i32 @main() {
 	%2 = call i32 @readInt()
 	store i32 %2, i32* %b
 	; while statement
-	br %condwhile0
+	br label %condwhile0
 condwhile0:
 	%3 = load i32* %b
 	%4 = add i32 0, 0;ASSIGN
 	%5 = icmp ne i32 %3, %4
-	br i1 %5, label %codewhile0, label %endwhile0
+	br label i1 %5, label %codewhile0, label %endwhile0
 codewhile0:
 	%c = alloca i32
 	%6 = load i32* %b
 	store i32 %6, i32* %c
 	; while statement
-	br %condwhile1
+	br label %condwhile1
 condwhile1:
 	%7 = load i32* %a
 	%8 = load i32* %b
 	%9 = icmp sge i32 %7, %8
-	br i1 %9, label %codewhile1, label %endwhile1
+	br label i1 %9, label %codewhile1, label %endwhile1
 codewhile1:
 	%10 = load i32* %a
 	%11 = load i32* %b
 	%12 = sub i32 %10, %11
 	store i32 %12, i32* %a
-	br %endwhile1
+	br label %endwhile1
 endwhile1:
 	%13 = load i32* %a
 	store i32 %13, i32* %b
 	%14 = load i32* %c
 	store i32 %14, i32* %a
-	br %endwhile0
-endwhile0:
 	; print var
 	%15 = load i32* %a
 	call void @putInt(i32 %15)
+	call i32 @putchar(i32 10)
+	br label %endwhile0
+endwhile0:
+	; print var
+	%17 = load i32* %a
+	call void @putInt(i32 %17)
 	call i32 @putchar(i32 10)
 	ret i32 0
 }

@@ -506,14 +506,14 @@ public class LLVMWriter {
 		String whileCount = (new Integer(_whileCount)).toString();
 		++_whileCount;
 
-		_lines.add("\tbr %condwhile"+whileCount);
+		_lines.add("\tbr label %condwhile"+whileCount);
 		_lines.add("condwhile"+whileCount+":");
 
 		// <Cond>
 		if (_parsingRules.get(_rule) == 31) { rule31(); }
 		String cond = (new Integer(_count-1)).toString();
 
-		_lines.add("\tbr i1 %"+cond+", label %codewhile"+whileCount+", label %endwhile"+whileCount);
+		_lines.add("\tbr label i1 %"+cond+", label %codewhile"+whileCount+", label %endwhile"+whileCount);
 		_lines.add("codewhile"+whileCount+":");
 
 		++_sym; // do
@@ -524,7 +524,7 @@ public class LLVMWriter {
 
 		++_sym; // od
 
-		_lines.add("\tbr %endwhile"+whileCount);
+		_lines.add("\tbr label %endwhile"+whileCount);
 		_lines.add("endwhile"+whileCount+":");
 
 	}
