@@ -10,8 +10,7 @@ begin
       a := a-b
     od ;
     b := a ;
-    a := c;
-    print(a)
+    a := c
   od ;
   print(a)
 end

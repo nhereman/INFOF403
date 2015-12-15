@@ -524,7 +524,7 @@ public class LLVMWriter {
 
 		++_sym; // od
 
-		_lines.add("\tbr label %endwhile"+whileCount);
+		_lines.add("\tbr label %condwhile"+whileCount);
 		_lines.add("endwhile"+whileCount+":");
 
 	}

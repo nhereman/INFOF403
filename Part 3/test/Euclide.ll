@@ -108,21 +108,17 @@ codewhile1:
 	%11 = load i32* %b
 	%12 = sub i32 %10, %11
 	store i32 %12, i32* %a
-	br label %endwhile1
+	br label %condwhile1
 endwhile1:
 	%13 = load i32* %a
 	store i32 %13, i32* %b
 	%14 = load i32* %c
 	store i32 %14, i32* %a
+	br label %condwhile0
+endwhile0:
 	; print var
 	%15 = load i32* %a
 	call void @putInt(i32 %15)
-	call i32 @putchar(i32 10)
-	br label %endwhile0
-endwhile0:
-	; print var
-	%17 = load i32* %a
-	call void @putInt(i32 %17)
 	call i32 @putchar(i32 10)
 	ret i32 0
 }
