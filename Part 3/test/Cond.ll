@@ -10,7 +10,19 @@ entry:
 	%mult = alloca i32
 	store i32 0, i32* %res
 	store i32 1, i32* %mult
+	br label %firstread
+firstread:
+	%a = call i32 @getchar()
+	%b = icmp eq i32 %a, 45
+	br i1 %b, label %firstminus, label %firstdigit
+firstminus:
+	store i32 -1, i32* %mult
 	br label %read
+firstdigit:
+	%c = sub i32 %a, 48
+	store i32 %c, i32* %digit
+	%d = icmp ne i32 %a, 10
+	br i1 %d, label %save, label %exit
 read:
 	%0 = call i32 @getchar()
 	%1 = sub i32 %0, 48
