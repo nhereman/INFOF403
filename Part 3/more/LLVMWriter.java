@@ -714,15 +714,9 @@ public class LLVMWriter {
 		System.out.println("entry:");
 		System.out.println("	%size = alloca i32");
 		System.out.println("	%int = alloca i32");
-		System.out.println("	store i32 1, i32* %size");
+		System.out.println("	store i32 10, i32* %size");
 		System.out.println("	store i32 %a, i32* %int");
-		System.out.println("	br label %zerotest");
-		System.out.println("zerotest:");
-		System.out.println("	%z = icmp eq i32 %a, 0");
-		System.out.println("	br i1 %z, label %displayzero, label %negativetest");
-		System.out.println("displayzero:");
-		System.out.println("	%d = call i32 @putchar(i32 48)");
-		System.out.println("	br label %exit");
+		System.out.println("	br label %negativetest");
 		System.out.println("negativetest:");
 		System.out.println("	%0 = icmp slt i32 %a, 0");
 		System.out.println("	br i1 %0, label %minus, label %sizecmp");
