@@ -41,7 +41,13 @@ entry:
 	%int = alloca i32
 	store i32 1, i32* %size
 	store i32 %a, i32* %int
-	br label %negativetest
+	br label %zerotest
+zerotest:
+	%z = icmp eq i32 %a, 0
+	br i1 %z, label %displayzero, label %negativetest
+displayzero:
+	%d = call i32 @putchar(i32 48)
+	br label %exit
 negativetest:
 	%0 = icmp slt i32 %a, 0
 	br i1 %0, label %minus, label %sizecmp
