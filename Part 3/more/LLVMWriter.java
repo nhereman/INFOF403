@@ -513,7 +513,7 @@ public class LLVMWriter {
 		if (_parsingRules.get(_rule) == 31) { rule31(); }
 		String cond = (new Integer(_count-1)).toString();
 
-		_lines.add("\tbr label i1 %"+cond+", label %codewhile"+whileCount+", label %endwhile"+whileCount);
+		_lines.add("\tbr i1 %"+cond+", label %codewhile"+whileCount+", label %endwhile"+whileCount);
 		_lines.add("codewhile"+whileCount+":");
 
 		++_sym; // do

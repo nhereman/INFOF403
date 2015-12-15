@@ -91,7 +91,7 @@ condwhile0:
 	%3 = load i32* %b
 	%4 = add i32 0, 0;ASSIGN
 	%5 = icmp ne i32 %3, %4
-	br label i1 %5, label %codewhile0, label %endwhile0
+	br i1 %5, label %codewhile0, label %endwhile0
 codewhile0:
 	%c = alloca i32
 	%6 = load i32* %b
@@ -102,7 +102,7 @@ condwhile1:
 	%7 = load i32* %a
 	%8 = load i32* %b
 	%9 = icmp sge i32 %7, %8
-	br label i1 %9, label %codewhile1, label %endwhile1
+	br i1 %9, label %codewhile1, label %endwhile1
 codewhile1:
 	%10 = load i32* %a
 	%11 = load i32* %b
