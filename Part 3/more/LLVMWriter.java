@@ -183,13 +183,14 @@ public class LLVMWriter {
 		// <Term>
 		if (_parsingRules.get(_rule) == 17) { rule17(); }
 
+		String right = (new Integer(_count-1)).toString();
+		_lines.add("\t%"+(new Integer(_count)).toString()+" = "+op+" i32 %"+left+", %"+right);
+		++_count;
+
 		// <ExprArith2>
 		if (_parsingRules.get(_rule) == 15) { rule15(); }
 		else if (_parsingRules.get(_rule) == 16) { ++_rule;} // -> Epsilon
 
-		String right = (new Integer(_count-1)).toString();
-		_lines.add("\t%"+(new Integer(_count)).toString()+" = "+op+" i32 %"+left+", %"+right);
-		++_count;
 
 	}
 
@@ -230,13 +231,14 @@ public class LLVMWriter {
 		else if (_parsingRules.get(_rule) == 22) { rule22(); }
 		else if (_parsingRules.get(_rule) == 23) { rule23(); }
 
+		String right = (new Integer(_count-1)).toString();
+		_lines.add("\t%"+(new Integer(_count)).toString()+" = "+op+" i32 %"+left+", %"+right);
+		++_count;
+
 		// <Term2>
 		if (_parsingRules.get(_rule) == 18) { rule18(); }
 		else if (_parsingRules.get(_rule) == 19) { ++_rule; } // -> Epsilon
 
-		String right = (new Integer(_count-1)).toString();
-		_lines.add("\t%"+(new Integer(_count)).toString()+" = "+op+" i32 %"+left+", %"+right);
-		++_count;
 	}
 
 	private void rule20() {
@@ -252,13 +254,16 @@ public class LLVMWriter {
 	}
 
 	private void rule21() {
-		// <Factor>	->	- <ExprArith>
+		// <Factor>	->	- <Factor>
 		++_rule;
 
 		++_sym; // -
 
-		// <ExprArith>
-		if ( _parsingRules.get(_rule) == 14) { rule14(); }
+		// <Factor>
+		if (_parsingRules.get(_rule) == 20) { rule20(); }
+		else if (_parsingRules.get(_rule) == 21) { rule21(); }
+		else if (_parsingRules.get(_rule) == 22) { rule22(); }
+		else if (_parsingRules.get(_rule) == 23) { rule23(); }
 
 		_lines.add("\t%"+(new Integer(_count)).toString()+" = mul i32 %"+(new Integer(_count-1)).toString()+", -1");
 		++_count;
@@ -284,7 +289,7 @@ public class LLVMWriter {
 		++_sym; // [Number]
 
 		// TODO: Find another way to assign
-		_lines.add("\t%"+(new Integer(_count)).toString()+" = add i32 0, "+number);
+		_lines.add("\t%"+(new Integer(_count)).toString()+" = add i32 0, "+number+";ASSIGN");
 		++_count;
 	}
 
@@ -392,13 +397,14 @@ public class LLVMWriter {
 		// <AndCond>
 		if (_parsingRules.get(_rule) == 34) { rule34(); }
 
+		String right = (new Integer(_count-1)).toString();
+		_lines.add("\t%"+(new Integer(_count)).toString()+" = or i1 %"+left+", %"+right);
+		++_count;
+
 		// <Cond2>
 		if (_parsingRules.get(_rule) == 32) { rule32(); }
 		else if (_parsingRules.get(_rule) == 33) { ++_rule; } // -> Epsilon
 
-		String right = (new Integer(_count-1)).toString();
-		_lines.add("\t%"+(new Integer(_count)).toString()+" = or i1 %"+left+", %"+right);
-		++_count;
 	}
 
 	private void rule34() {
@@ -425,13 +431,13 @@ public class LLVMWriter {
 		if (_parsingRules.get(_rule) == 37) { rule37(); }
 		else if (_parsingRules.get(_rule) == 38) { rule38(); }
 
-		// <AndCond2>
-		if (_parsingRules.get(_rule) == 35) { rule35(); }
-		else if (_parsingRules.get(_rule) == 36) { ++_rule; } // -> Epsilon
-
 		String right = (new Integer(_count-1)).toString();
 		_lines.add("\t%"+(new Integer(_count)).toString()+" = and i1 %"+left+", %"+right);
 		++_count;
+
+		// <AndCond2>
+		if (_parsingRules.get(_rule) == 35) { rule35(); }
+		else if (_parsingRules.get(_rule) == 36) { ++_rule; } // -> Epsilon
 	}
 
 	private void rule37() {
@@ -453,7 +459,7 @@ public class LLVMWriter {
 		String cond = (new Integer(_count-1)).toString();
 
 		// TODO: Find the way to do a NOT and not use a XOR
-		_lines.add("\t%"+(new Integer(_count)).toString()+" = xor i1 %"+cond+", 1");
+		_lines.add("\t%"+(new Integer(_count)).toString()+" = xor i1 %"+cond+", 1;NOT");
 		++_count;
 	}
 

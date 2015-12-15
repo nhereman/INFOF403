@@ -38,7 +38,7 @@ public class GrammarRules {
 		rules.add(Arrays.asList(new Enum[]{GrammarVariable.FACTOROP, GrammarVariable.FACTOR, GrammarVariable.TERM2})); // Rules 18
 		rules.add(new LinkedList<Enum>()); // Rules 19 // EPSILON
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.LEFT_PARENTHESIS, GrammarVariable.EXPRARITH, LexicalUnit.RIGHT_PARENTHESIS})); // Rules 20
-		rules.add(Arrays.asList(new Enum[]{LexicalUnit.MINUS, GrammarVariable.EXPRARITH})); // Rules 21
+		rules.add(Arrays.asList(new Enum[]{LexicalUnit.MINUS, GrammarVariable.FACTOR})); // Rules 21
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.VARNAME})); // Rules 22
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.NUMBER})); // Rules 23
 		rules.add(Arrays.asList(new Enum[]{LexicalUnit.PLUS})); // Rules 24
