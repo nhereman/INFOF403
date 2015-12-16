@@ -32,44 +32,44 @@
 \hfill \\
 There was a mistake in the modified grammar rules in the second part of the project. The rule 21 was :
 \lstinputlisting{../old21rule.txt}
-which was wrong because it did not take into account the priority of the "-" operation. An arithmetic expression like $-5+5$ could have been parsed like $-(5+5)$ instead of $(-5) + 5$. So it was corrected that way :
+which was wrong because it didn't take into account the priority of the "-" operation. An arithmetic expression like $-5+5$ would have been parsed like $-(5+5)$ instead of $(-5) + 5$. So it was corrected that way :
 \lstinputlisting{../new21rule.txt}
 
 \section*{Hypothesis on the language}
 
 \hfill \\
-As everything is not detailed in the statement, some hypothesis has to be made. At first, there is no variable type in this langage, so the decision has been taken to consider them all like integer. By that fact, the division also return a integer (i.e. $5\div2=2$).
+As everything isn't detailed in the statement, some hypothesis have to be made. At first, there is no variable type in this language, so we took the decision to consider them all like integers. By that fact, the division also returns an integer (i.e. $5\div2=2$).
 
-The second hypothesis concern the "for" operation. It is not precised if the condition to enter in the loop is that the variable is lower or equal than the objective or if the variable as to be strictly lower. In our implementation, we consider that the variable as to be strictly lower than the objective.
+The second hypothesis concerns the "for" operation. It isn't precised if the condition to enter in the loop is that the variable has to be lower or equal than the objective or if the variable has to be strictly lower. In our implementation, we consider that the variable has to be strictly lower than the objective.
 
-\section*{A function to read integer}
+\section*{A function to read integers}
 
 \hfill \\
-As there is a read operation in the language, a function to read integer from the standard input had to be implemented. Here is the llvm code which do this :
+As there is a read operation in the language, a function to read integers from the standard input had to be implemented. Here is the llvm code which does this :
 
 \lstinputlisting{../readInt-llvm.txt}
 
 \hfill \\
-The function read each char from the standard input. If the first char is a minus ( ascii code : 45 ) the result is multiplied by -1 to have a negative number. If the function encounter an "end of line" symbol ( ascii code : 10 ), it stop and return the result. All the others char parsed are transformed in the corresponding integer by subbing 48 ( the ascii code of 0 ) and added to the already transformed char multiplied by 10.
+The function reads each char from the standard input. If the first char is a minus ( ascii code : 45 ) the result is multiplied by -1 to have a negative number. If the function encounter an "end of line" symbol ( ascii code : 10 ), it stops and returns the result. All the others chars parsed are transformed in the corresponding integer by subbing 48 ( the ascii code of 0 ) and added to the already transformed char multiplied by 10.
 
 This code is only included if there is at least one read call.
 
-\section*{A function to print integer}
+\section*{A function to print integers}
 
 \hfill \\
-As there is a print operation in the language, a function to print integer on the standard output had to be implemented. Here is the llvm code which do this :
+As there is a print operation in the language, a function to print an integer on the standard output had to be implemented. Here is the llvm code which do this :
 
 \lstinputlisting{../putInt-llvm.txt}
 
 \hfill \\
-The function start to test if the integer is negative. If it is, it prints the minus char. Then it stores the absolute value of the integer. Then it computes the lowest power of ten bigger than this absolute value, with a minimum of ten to avoid division by zero later, and store it in a "size" variable.
+The function starts by testing if the integer is negative. If it is, it prints the minus char. Then it stores the absolute value of the integer. After that, it computes the lowest power of ten bigger than this absolute value, with a minimum of ten to avoid division by zero later, and stores it in a "size" variable.
 
-After that the function loop while the "size" variable is strictly greater than one. In each loop the "size" variable is divided by ten and stored. the absolute value is divided by the new size. The modulo ten of this division is taken and the result is transformed in the corresponding ascii code by adding 48.
+After that, the function loops while the "size" variable is strictly greater than one. In each loop the "size" variable is divided by ten and stored. The absolute value is divided by the new size. The modulo ten of this division is taken and the result is transformed in the corresponding ascii code by adding 48.
 
 \section*{The left-associativity}
 
 \hfill \\
-In the part 2 of the project, the left associativity of the operators was not kept because it was impossible while removing left-reccursion. This problem is fixed in the third part at the level of llvm generation. Here is a pseudo-code of how it is applied with the exemple of the rule 35 :
+In the part 2 of the project, the left associativity of the operators was not kept because it was impossible while removing left-reccursion. This problem is fixed in the third part at the level of llvm generation. Here is a pseudo-code of how it is applied with the example of the rule 35 :
 
 \lstinputlisting{../rule35.txt}
 \lstinputlisting{../rule35-pseudo.txt}
@@ -80,7 +80,7 @@ As you can see, the llvm code is written before the recursion so it gives a left
 \section*{operation NOT}
 
 \hfill \\
-There is no "not" operation in llvm so a xor with 1 has been used to emplace it.
+There is no "not" operation in llvm so a xor with 1 has been used to remplace it.
 $ not 1 = 0 $ , $not 0 = 1$, $1 xor 1 = 0$ and $0 xor 1 = 1$.
 
 \end{document}
